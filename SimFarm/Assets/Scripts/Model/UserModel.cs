@@ -4,7 +4,7 @@ using UnityEngine;
 
 // usermodel with Singleton pattern
 
-public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser
+public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser
 {
     private int money;
     private int energy;
@@ -41,6 +41,10 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, I
     }
     public void setDayendUserMoney(int money) {
         this.money = money;
+    }
+
+    public int getResultUserMoney() {
+        return money;
     }
 
 
