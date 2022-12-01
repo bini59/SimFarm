@@ -16,7 +16,7 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser
     public int MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
     public string[] Equipment { get => equipment; set => equipment = value; }
 
-    public int[] getUserInfo()
+    public int[] getFarmUserInfo()
     {
         int[] userInfo = new int[3];
         userInfo[0] = money;

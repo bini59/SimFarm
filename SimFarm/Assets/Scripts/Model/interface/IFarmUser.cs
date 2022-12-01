@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IFarmUser
 {
-    public int[] getUserInfo();
+    public int[] getFarmUserInfo();
 
 }
