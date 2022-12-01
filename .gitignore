@@ -9,6 +9,7 @@
 /SimFarm/[Bb]uilds/
 /SimFarm/[Ll]ogs/
 /SimFarm/[Mm]emoryCaptures/
+/SimFarm/[Uu]serSettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/SimFarm/[Aa]ssets/**/*.meta
