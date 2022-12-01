@@ -4,7 +4,7 @@ using UnityEngine;
 
 // usermodel with Singleton pattern
 
-public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFramUser
+public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser
 {
     private int money;
     private int energy;
