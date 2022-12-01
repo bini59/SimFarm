@@ -4,17 +4,12 @@ using UnityEngine;
 
 // usermodel with Singleton pattern
 
-public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser
+public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser
 {
     private int money;
     private int energy;
     private int maxEnergy;
     private string[] equipment;
-
-    public int Money { get => money; set => money = value; }
-    public int Energy { get => energy; set => energy = value; }
-    public int MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
-    public string[] Equipment { get => equipment; set => equipment = value; }
 
     public int[] getFarmUserInfo() {
         int[] userInfo = new int[3];
@@ -40,5 +35,13 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, I
     public string[] getBarnUserEquipment() {
         return equipment;
     }
+
+    public int getDayendUserMoney() {
+        return money;
+    }
+    public void setDayendUserMoney(int money) {
+        this.money = money;
+    }
+
 
 }
