@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TypingEffect : MonoBehaviour
 {
     public Text[] tx;
-
+    bool txstate=true;
 
     public string[] m_text = new string[] { "현대의 복잡한 인간관계, 삶에 지쳐 귀성길에 오른 주인공.\n 농사지으며 조금 내려놓은 채로 살기위해서 내려왔다.",
                                      "하지만 농사를 짓는 것도 공부를 하고, 연구를 해야 했다.",
@@ -16,12 +16,14 @@ public class TypingEffect : MonoBehaviour
     void Start()
     {
         StartCoroutine(_typing());
+        
     }
 
 
     IEnumerator _typing()
     {
         yield return new WaitForSeconds(2f);
+        
         for (int j = 0; j <= tx.Length-1; j++)
         {
             for (int i = 0; i <= m_text[j].Length; i++)
@@ -29,10 +31,17 @@ public class TypingEffect : MonoBehaviour
                 tx[j].text = m_text[j].Substring(0, i);
                 yield return new WaitForSeconds(0.08f);
             }
+            
             yield return new WaitForSeconds(1f);
         }
+        txstate = false;
+        if (!txstate)
+        {
+            Debug.Log("Text END");
+        }
     }
-        
+    
+
 
 }
 
