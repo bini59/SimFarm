@@ -9,7 +9,7 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, I
     private int money;
     private int energy;
     private int maxEnergy;
-    private string[] equipment;
+    private equipments[] equipment;
 
     public int[] getFarmUserInfo() {
         int[] userInfo = new int[3];
@@ -32,7 +32,7 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, I
 
         return energyInfo;
     }
-    public string[] getBarnUserEquipment() {
+    public equipments[] getBarnUserEquipment() {
         return equipment;
     }
 
