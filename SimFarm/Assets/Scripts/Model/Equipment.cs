@@ -3,11 +3,15 @@ public class Equipment
     private int feel = 0;
     private int growth = 0;
     private int hunger = 0;
+    private int price = 100;
+    private bool isOwned = false;
     private equipments equipmentType;
 
-    public Equipment(equipments e) {
+    public Equipment(equipments e)
+    {
         equipmentType = e;
-        switch (e) {
+        switch (e)
+        {
             case equipments.low_food: hunger = 1; break;
             case equipments.mid_food: hunger = 2; break;
             case equipments.high_food: hunger = 3; break;
@@ -16,7 +20,7 @@ public class Equipment
             case equipments.wood_horseshoe: feel = 1; break;
             case equipments.iron_horseshoe: feel = 2; break;
             case equipments.high_barn: feel = 1; break;
-            case equipments.old_grandfather_cloth: feel = 1; grwoth = 1; break;
+            case equipments.old_grandfather_cloth: feel = 1; growth = 1; break;
             case equipments.new_grandfather_cloth: feel = 2; growth = 2; break;
             case equipments.normal_mud: feel = 1; break;
             case equipments.clean_mud: feel = 2; break;
@@ -27,7 +31,12 @@ public class Equipment
             case equipments.high_cleaner: feel = 3; break;
         }
     }
-
+    public bool getIsOwned() {
+        return isOwned;
+    }
+    public int getPrice() {
+        return price;
+    }
     public int getFeel() {
         return feel;
     }

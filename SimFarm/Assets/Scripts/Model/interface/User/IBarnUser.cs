@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IBarnUser
 {
     public int[] getBarnUserEnergy();
-    public string[] getBarnUserEquipment();
+    public Equipment[] getBarnUserEquipment();
 
 }

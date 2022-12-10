@@ -4,12 +4,23 @@ using UnityEngine;
 
 // usermodel with Singleton pattern
 
-public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser
+public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
 {
     private int money;
     private int energy;
     private int maxEnergy;
-    private equipments[] equipment;
+    private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
+
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+        foreach(int i in System.Enum.GetValues(typeof(equipments))) {
+            equipment[i] = new Equipment((equipments)i);
+        }
+        // log for test
+        foreach(Equipment e in equipment) {
+            Debug.Log(e.getEquipmentType() + " " + e.getIsOwned());
+        }
+    }
 
     public int[] getFarmUserInfo() {
         int[] userInfo = new int[3];
@@ -32,8 +43,29 @@ public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, I
 
         return energyInfo;
     }
-    public equipments[] getBarnUserEquipment() {
+    public bool buyEquipment(equipments equipment) {
+        return true;
+    }
+    public Equipment[] getBarnUserEquipment() {
         return equipment;
+    }
+
+    public Equipment[] getShopEquipment() {
+        int noOwnedEquipment = 0;
+        foreach(Equipment e in equipment) {
+            if(e.getIsOwned() == false) {
+                noOwnedEquipment++;
+            }
+        }
+        Equipment[] shopEquipment = new Equipment[noOwnedEquipment];
+        int i = 0;
+        foreach(Equipment e in equipment) {
+            if(e.getIsOwned() == false) {
+                shopEquipment[i] = e;
+                i++;
+            }
+        }
+        return shopEquipment;
     }
 
     public int getDayendUserMoney() {
