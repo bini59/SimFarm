@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1313969331131764010}
   - component: {fileID: 1313969331131764011}
   - component: {fileID: 1313969331131764012}
-  - component: {fileID: 5773366006620187399}
+  - component: {fileID: 6575534379301698062}
   m_Layer: 5
   m_Name: Equipment
   m_TagString: Untagged
@@ -122,8 +122,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1313969331131764011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5773366006620187399
+      m_Calls:
+      - m_Target: {fileID: 6575534379301698062}
+        m_TargetAssemblyTypeName: View.Shop.ItemView, Assembly-CSharp
+        m_MethodName: click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6575534379301698062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03d9499b7c0a48ae9278865999cb6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shop: {fileID: 0}
 --- !u!1 &1313969332348489002
 GameObject:
   m_ObjectHideFlags: 0

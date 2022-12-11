@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 using Model;
+using Model.User;
 
 
 namespace Presenter{
