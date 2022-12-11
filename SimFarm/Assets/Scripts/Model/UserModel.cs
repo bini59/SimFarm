@@ -3,49 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // usermodel with Singleton pattern
+namespace Model{
+    namespace User{
+        public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
+        {
+            private int money;
+            private int energy;
+            private int maxEnergy;
+            private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
-public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser
-{
-    private int money;
-    private int energy;
-    private int maxEnergy;
-    private string[] equipment;
+            void Awake() {
+                DontDestroyOnLoad(gameObject);
+                foreach(int i in System.Enum.GetValues(typeof(equipments))) {
+                    equipment[i] = new Equipment((equipments)i);
+                }
+                // log for test
+                foreach(Equipment e in equipment) {
+                    Debug.Log(e.getEquipmentType() + " " + e.getIsOwned());
+                }
+            }
 
-    public int[] getFarmUserInfo() {
-        int[] userInfo = new int[3];
-        userInfo[0] = money;
-        userInfo[1] = energy;
-        userInfo[2] = maxEnergy;
+            public int[] getFarmUserInfo() {
+                int[] userInfo = new int[3];
+                userInfo[0] = money;
+                userInfo[1] = energy;
+                userInfo[2] = maxEnergy;
 
-        return userInfo;
+                return userInfo;
+            }
+
+            /**
+            * @return int[] energy info
+            * int[0] = energy
+            * int[1] = maxEnergy
+            */
+            public int[] getBarnUserEnergy() {
+                int [] energyInfo = new int[2];
+                energyInfo[0] = energy;
+                energyInfo[1] = maxEnergy;
+
+                return energyInfo;
+            }
+            public bool buyEquipment(equipments equipment) {
+                return true;
+            }
+            public Equipment[] getBarnUserEquipment() {
+                return equipment;
+            }
+
+            public Equipment[] getShopEquipment() {
+                int noOwnedEquipment = 0;
+                foreach(Equipment e in equipment) {
+                    if(e.getIsOwned() == false) {
+                        noOwnedEquipment++;
+                    }
+                }
+                Equipment[] shopEquipment = new Equipment[noOwnedEquipment];
+                int i = 0;
+                foreach(Equipment e in equipment) {
+                    if(e.getIsOwned() == false) {
+                        shopEquipment[i] = e;
+                        i++;
+                    }
+                }
+                return shopEquipment;
+            }
+
+            public int getDayendUserMoney() {
+                return money;
+            }
+            public void setDayendUserMoney(int money) {
+                this.money = money;
+            }
+
+            public int getResultUserMoney() {
+                return money;
+            }
+
+
+        }
     }
-
-    /**
-      * @return int[] energy info
-      * int[0] = energy
-      * int[1] = maxEnergy
-    */
-    public int[] getBarnUserEnergy() {
-        int [] energyInfo = new int[2];
-        energyInfo[0] = energy;
-        energyInfo[1] = maxEnergy;
-
-        return energyInfo;
-    }
-    public string[] getBarnUserEquipment() {
-        return equipment;
-    }
-
-    public int getDayendUserMoney() {
-        return money;
-    }
-    public void setDayendUserMoney(int money) {
-        this.money = money;
-    }
-
-    public int getResultUserMoney() {
-        return money;
-    }
-
-
 }
