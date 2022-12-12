@@ -9,7 +9,7 @@ namespace Model{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
             private int money = 1000;
-            private int energy = 8;
+            private int energy = 3;
             private int maxEnergy = 8;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
