@@ -15,6 +15,10 @@ namespace Model{
             {
                 animals = new Animal[6];
                 index = 0;
+
+                // test for create button
+                buyAnimal();
+                buyAnimal();
             }
             public enum userInput
             {
