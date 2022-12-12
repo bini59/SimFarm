@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Simfarm;
 // usermodel with Singleton pattern
 namespace Model{
     namespace User{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
-            private int money;
-            private int energy;
-            private int maxEnergy;
+            private int money = 1000;
+            private int energy = 8;
+            private int maxEnergy = 8;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
             void Awake() {
