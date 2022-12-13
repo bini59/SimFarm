@@ -6,4 +6,6 @@ public interface IDayendUser
 {
     public int getDayendUserMoney();
     public void setDayendUserMoney(int money);
+    public int getDay();
+    public void setDay(int day);
 }

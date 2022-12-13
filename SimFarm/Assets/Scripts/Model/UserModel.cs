@@ -8,6 +8,7 @@ namespace Model{
     namespace User{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
+            private int day;
             private int money = 1000;
             private int energy = 3;
             private int maxEnergy = 8;
@@ -81,6 +82,15 @@ namespace Model{
                 return money;
             }
 
+            public void setDay(int day)
+            {
+                this.day = day;
+            }
+
+            public int getDay()
+            {
+                return day;
+            }
 
         }
     }
