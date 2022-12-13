@@ -26,7 +26,18 @@ namespace Presenter
             {
                 return animal.getAnimalList();
             }
-
+            public int getUncleMoney()
+            {
+                return user.getUncleMoney();
+            }
+            public int getDayendUserMoney()
+            {
+                return user.getDayendUserMoney();
+            }
+            public void setDayendUserMoney(int money)
+            {
+                user.setDayendUserMoney(money);
+            }
             public void setDay(int day)
             {
                 user.setDay(day);

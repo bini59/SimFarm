@@ -3,17 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - EquipmentName
-<<<<<<< HEAD
-  - endPanel
-  - AnimalTurnGold
-  - endResult
-  - dayResult
-  - totalGold
-=======
-  - ShopMessage
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX

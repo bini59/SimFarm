@@ -12,6 +12,7 @@ namespace Model{
             private int money = 1000;
             private int energy = 3;
             private int maxEnergy = 8;
+            private int unclemoney = 1000;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
             void Awake() {
@@ -70,15 +71,18 @@ namespace Model{
                 }
                 return shopEquipment;
             }
-
-            public int getDayendUserMoney() {
+            public int getUncleMoney()
+            {
+                return unclemoney;
+            }
+            public int getDayendUserMoney() {       //토탈골드할 떄 쓰자
                 return money;
             }
             public void setDayendUserMoney(int money) {
-                this.money = money;
+                this.money += money;
             }
 
-            public int getResultUserMoney() {
+            public int getResultUserMoney() {       //최종결과 골드할  떄 쓰자
                 return money;
             }
 

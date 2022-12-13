@@ -6,21 +6,24 @@ namespace Model{
     namespace Animal{
         public class Animal
         {
-            public enum animalType
-            {
-                Cow,
-                Horse,
-                Goat,
-                Duck,
-                Pig,
-                Chicken
-            }
-
+            
             private int growth;      //성장정도, 
             private int feel;        //기분
             private int hunger;      //각 동물들의 배고픔 수치
             private int turnMoney;    //각 동물들이 벌어들이는 골드
             private int turn;        //각 동물들이 골드를 벌어들이는데 사용되는 턴 수
+
+            public int[] getDayendAnimalInfo()
+            {
+                int[] animalInfo = new int[5];
+                animalInfo[0] = growth;
+                animalInfo[1] = feel;
+                animalInfo[2] = hunger;
+                animalInfo[3] = turnMoney;
+                animalInfo[4] = turn;
+
+                return animalInfo;
+            }
             public void setGrowth(int growth)
             {
                 this.growth = growth;
@@ -44,15 +47,7 @@ namespace Model{
             }
             public int getTurnMoney()
             {
-                return 1000;
-            }
-            public void setTurn(int turn)
-            {
-                this.turn = turn;
-            }
-            public int getTurn()
-            {
-                return turn;
+                return 3000;
             }
             public void feed()
             {

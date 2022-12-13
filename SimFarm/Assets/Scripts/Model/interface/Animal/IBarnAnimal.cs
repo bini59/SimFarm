@@ -4,5 +4,5 @@ using UnityEngine;
 using Model.Animal;
 public interface IBarnAnimal
 {
-    public Animal getAnimalState(Animal animal);
+    public int[] getAnimalState(Animal animal);
 }

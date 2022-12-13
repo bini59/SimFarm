@@ -10,15 +10,17 @@ namespace Model{
         {
             private Animal[] animals;
             private int index;
-
-            AnimalModel()
+            private bool isOwned = false;
+            private animaltypes animaltypes;
+            public AnimalModel()
             {
                 animals = new Animal[6];
                 index = 0;
 
+                buyAnimal();
+                buyAnimal();
+                buyAnimal();
                 // test for create button
-                buyAnimal();
-                buyAnimal();
             }
             public enum userInput
             {
@@ -29,19 +31,25 @@ namespace Model{
             {
                 animals[index++] = new Animal();
             }
-            public void setAnimalState(userInput userinput , Animal.animalType animal)
-            {
-                index = (int)animal;
-                animals[index].setState((int)userinput); // 이건 제대로 작동 안할거같ㅇㄴ데
-            }
+            
             public Animal[] getAnimalList()
             {
                 return animals;
             }
 
-            public Animal getAnimalState(Animal animal)
+            public int[] getAnimalState(Animal animal)
             {
-                return animal;
+                return animal.getDayendAnimalInfo();
+            }
+
+            public bool getIsOwned()
+            {
+                return isOwned;
+            }
+
+            public animaltypes GetAnimaltypes()
+            {
+                return animaltypes;
             }
         }
     }
