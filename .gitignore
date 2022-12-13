@@ -60,3 +60,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 SimFarm.zip
+SimFarm/Packages/packages-lock.json
+SimFarm/Packages/manifest.json
