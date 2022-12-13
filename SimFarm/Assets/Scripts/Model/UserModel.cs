@@ -8,16 +8,10 @@ namespace Model{
     namespace User{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
-<<<<<<< HEAD
-            private int money;
-            private int energy;
-            private int maxEnergy;
             private int day;
-=======
             private int money = 1000;
             private int energy = 3;
             private int maxEnergy = 8;
->>>>>>> main
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
             void Awake() {
