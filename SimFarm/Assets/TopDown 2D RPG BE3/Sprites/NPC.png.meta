@@ -153,7 +153,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Luna 0
+      name: NPC_0
       rect:
         serializedVersion: 2
         x: 0
@@ -167,18 +167,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eddb976be9c1115e0800000000000000
-      internalID: -1940738496428130850
+      spriteID: 5160ae6e1459e9f48854516d0e7e8c85
+      internalID: -1302135080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Luna 1
+      name: NPC_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
+        y: 35
         width: 16
         height: 16
       alignment: 0
@@ -188,14 +188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e653fdf27a9eaa0800000000000000
-      internalID: -6131185593638097393
+      spriteID: 4b5012650eeec9347a51009e343f2055
+      internalID: -61543436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ludo 0
+      name: NPC_2
       rect:
         serializedVersion: 2
         x: 0
@@ -209,18 +209,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c23020e048509640800000000000000
-      internalID: 5084661014962647745
+      spriteID: d3d852e234591bb45854bee21c765a88
+      internalID: 1838901482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ludo 1
+      name: NPC_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
         width: 16
         height: 16
       alignment: 0
@@ -230,8 +230,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f45deb26be4c0cb0800000000000000
-      internalID: -4896452150530583312
+      spriteID: 98ef452382313ab4782e96d011e2a202
+      internalID: -273190985
       vertices: []
       indices: 
       edges: []
@@ -247,10 +247,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ludo 1: -4896452150530583312
-      Ludo 0: 5084661014962647745
-      Luna 1: -6131185593638097393
-      Luna 0: -1940738496428130850
+      NPC_1: -61543436
+      NPC_2: 1838901482
+      NPC_0: -1302135080
+      NPC_3: -273190985
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

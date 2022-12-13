@@ -26,7 +26,7 @@ namespace Model{
             public void setAnimalState(userInput userinput , Animal.animalType animal)
             {
                 index = (int)animal;
-                animals[index].setState((int)userinput);
+                animals[index].setState((int)userinput); // 이건 제대로 작동 안할거같ㅇㄴ데
             }
             public Animal[] getAnimalList()
             {

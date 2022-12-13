@@ -10,6 +10,7 @@ namespace Model{
             private int money;
             private int energy;
             private int maxEnergy;
+            private int day;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
             void Awake() {
@@ -80,6 +81,15 @@ namespace Model{
                 return money;
             }
 
+            public void setDay(int day)
+            {
+                this.day = day;
+            }
+
+            public int getDay()
+            {
+                return day;
+            }
 
         }
     }

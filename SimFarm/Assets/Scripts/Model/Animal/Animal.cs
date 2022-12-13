@@ -44,7 +44,7 @@ namespace Model{
             }
             public int getTurnMoney()
             {
-                return turnMoney;
+                return 1000;
             }
             public void setTurn(int turn)
             {
