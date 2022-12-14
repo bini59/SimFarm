@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - dayResult
+  - endPanel
+  - ShopMessage
+  - Pig
+  - Duck
+  - Shop
+  - Cow
+  - Horse
+  - Sheep
+  - Chicken
+  - Board
   layers:
   - Default
   - TransparentFX
