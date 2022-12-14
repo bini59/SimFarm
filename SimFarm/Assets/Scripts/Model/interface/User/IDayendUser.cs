@@ -8,4 +8,5 @@ public interface IDayendUser
     public void setDayendUserMoney(int money);
     public int getDay();
     public void setDay(int day);
+    public int getUncleMoney();
 }

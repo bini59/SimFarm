@@ -5,6 +5,6 @@ using Model.Animal;
 
 public class Chicken : Animal
 {
-    Chicken.animalType type = animalType.Chicken;
+    
     
 }

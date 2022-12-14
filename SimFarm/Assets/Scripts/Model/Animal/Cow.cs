@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Model.Animal;
 
-public class Cow : Animal
+public class Cow
 {
-    Cow.animalType type = animalType.Cow;
-    Cow cow;
     
 }
