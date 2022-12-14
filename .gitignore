@@ -62,3 +62,4 @@ crashlytics-build.properties
 SimFarm.zip
 SimFarm/Packages/packages-lock.json
 SimFarm/Packages/manifest.json
+SimFarm/Assets/Scenes/SampleScene.unity
