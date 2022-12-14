@@ -4,5 +4,5 @@ using UnityEngine;
 using Model.Animal;
 public class Duck : Animal
 {
-    Duck.animalType type = animalType.Duck;
+    
 }

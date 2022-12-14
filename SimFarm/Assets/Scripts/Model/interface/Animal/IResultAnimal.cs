@@ -5,5 +5,5 @@ using Model.Animal;
 public interface IResultAnimal
 {
     public Animal[] getAnimalList();
-    public Animal getAnimalState(Animal animal);
+    public int[] getAnimalState(Animal animal);
 }
