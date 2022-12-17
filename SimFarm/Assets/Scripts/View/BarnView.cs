@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 using Presenter.Barn;
@@ -16,6 +17,12 @@ namespace View.Barn{
             presenter = new BarnPresenter(this);
         }
 
+        public void setImage(string src) {
+            print("animal");
+            Transform image = gameObject.transform.GetChild(0);
+            image.GetComponent<Image>().sprite = Resources.Load<Sprite>(src);
+        }
+
         public void actBtn() {
             presenter.actAnimal();
         }
@@ -23,6 +30,7 @@ namespace View.Barn{
         public void setMessage() {
             TMPro.TextMeshProUGUI temp = GetComponentInChildren(typeof(TMPro.TextMeshProUGUI)) as TMPro.TextMeshProUGUI;
             temp.text = "temp text";
+            
         }
 
         // Update is called once per frame

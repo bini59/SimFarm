@@ -21,6 +21,7 @@ namespace Presenter.Barn{
         public void actAnimal() {
             if(!user.redueceEnergy()) return;
             this.view.setMessage();
+            
         }
     }
 }

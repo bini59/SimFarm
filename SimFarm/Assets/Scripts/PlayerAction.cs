@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+using Simfarm;
 public class PlayerAction : MonoBehaviour
 {
+    public GameManager manager;
     float h;
     float v;
     Rigidbody2D rigid;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        manager = GameManager.Instance;
     }
 
     void Update()
@@ -31,33 +35,29 @@ public class PlayerAction : MonoBehaviour
         switch (o.gameObject.tag)
         {
             case "Pig":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/pig");
                 break;
             case "Chicken":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/chicken");
                 break;
             case "Horse":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/horse");
                 break;
             case "Sheep":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/sheep");
                 break;
             case "Duck":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/duck");
                 break;
             case "Cow":
-                print(o.gameObject.name);
+                manager.toggleBarn("BarnAnimal/cow");
                 break;
             case "Shop":
-                print(o.gameObject.name);
+                manager.toggleShop();
                 break;
         }
 
-    }
-
-
-
-    
+    }    
 
     void FixedUpdate()
     {
