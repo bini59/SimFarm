@@ -6,4 +6,6 @@ public interface IResultAnimal
 {
     public Animal[] getAnimalList();
     public int[] getAnimalState(Animal animal);
+    public void setAnimalScore(int score);
+    public int getAnimalScore();
 }

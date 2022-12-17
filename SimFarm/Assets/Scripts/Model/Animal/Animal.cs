@@ -7,11 +7,12 @@ namespace Model{
         public class Animal
         {
             
-            private int growth;      //성장정도, 
-            private int feel;        //기분
+            private int growth = 10;      //성장정도, 
+            private int feel = 10;        //기분
             private int hunger;      //각 동물들의 배고픔 수치
             private int turnMoney;    //각 동물들이 벌어들이는 골드
             private int turn;        //각 동물들이 골드를 벌어들이는데 사용되는 턴 수
+            private int score;
             private animaltypes animal;
 
             public int[] getDayendAnimalInfo()
@@ -28,19 +29,27 @@ namespace Model{
             public void setGrowth(int growth)
             {
                 this.growth = growth;
+                if (this.growth > 10)
+                {
+                    this.growth = 10;
+                }
             }
 
             public int getGrowth()
             {
-                return growth;
+                return this.growth;
             }
             public void setFeel(int feel)
             {
                 this.feel = feel;
+                if(this.feel > 10)
+                {
+                    this.feel = 10;
+                }
             }
             public int getFeel()
             {
-                return feel;
+                return this.feel;
             }
             public virtual int getTurn()
             {
@@ -58,6 +67,14 @@ namespace Model{
             {
                 return turnMoney;
             }
+            public virtual void setScore()
+            {
+                this.score = getFeel() + getGrowth();
+            }
+            public virtual int getScore()
+            {
+                return this.score;
+            }
             public virtual animaltypes animalType()
             {
                 return animal;
@@ -71,11 +88,11 @@ namespace Model{
             {
                 if(item == 0)
                 {
-                    this.feel++;
+                    setFeel(feel++);
                 }
                 else
                 {
-                    this.feel--;
+                    setFeel(feel--);
                 }
             }
             public void setState(int userInput) //추가 필요

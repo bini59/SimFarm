@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: CookieRun Regular SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1757523270
   material: {fileID: 2002487438215090722}
-  materialHashCode: 0
+  materialHashCode: 208201638
   m_Version: 1.1.0
   m_SourceFontFileGUID: 6a2f148dafc1ed74f942270e02a275a7
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 6a2f148dafc1ed74f942270e02a275a7, type: 3}
@@ -2633,9 +2633,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

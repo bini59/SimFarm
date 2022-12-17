@@ -16,13 +16,10 @@ namespace View
         {
             private GameObject[] endPanel;
             private GameObject dayresult;
-            private GameObject total;
-            private GameObject unclegold;
             private DayendPresenter dayendPresenter;
             private float posX = 0F;
             private float posY = 60.0F;
             private float posZ = 0F;
-            private float space = 60F;
             private int day = 1;
 
             // Start is called before the first frame update
