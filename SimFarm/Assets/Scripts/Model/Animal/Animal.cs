@@ -12,6 +12,7 @@ namespace Model{
             private int hunger;      //각 동물들의 배고픔 수치
             private int turnMoney;    //각 동물들이 벌어들이는 골드
             private int turn;        //각 동물들이 골드를 벌어들이는데 사용되는 턴 수
+            private animaltypes animal;
 
             public int[] getDayendAnimalInfo()
             {
@@ -41,13 +42,25 @@ namespace Model{
             {
                 return feel;
             }
-            public void setTurnMoney(int turnMoney)
+            public virtual int getTurn()
             {
-                this.turnMoney = turnMoney;
+                return turn;
             }
-            public int getTurnMoney()
+            public virtual void setTurn()
             {
-                return 3000;
+                if(this.turn == 0)
+                {
+                    this.turn = 1;
+                }
+                this.turn--;
+            }
+            public virtual int getTurnMoney()
+            {
+                return turnMoney;
+            }
+            public virtual animaltypes animalType()
+            {
+                return animal;
             }
             public void feed()
             {
@@ -89,28 +102,6 @@ namespace Model{
                     this.growth -= 1;
                     this.feel -= 1;
                 }
-            }
-
-            public int earnMoney()
-            {
-                int earn = 0;
-                if(this.feel > 8)
-                {
-                    earn = this.turnMoney;
-                }
-                else if(this.feel > 5)
-                {
-                    earn = this.turnMoney - this.turnMoney / 4;
-                }
-                else if(this.feel > 3)
-                {
-                    earn = this.turnMoney - this.turnMoney / 3;
-                }
-                else
-                {
-                    earn = this.turnMoney / 2;
-                }
-                return earn;
             }
         }
 
