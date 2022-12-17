@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simfarm;
+using Enum;
 // usermodel with Singleton pattern
 namespace Model{
     namespace User{

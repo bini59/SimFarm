@@ -1,3 +1,6 @@
+
+using Enum;
+
 namespace Model{
     public class Equipment
     {
