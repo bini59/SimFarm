@@ -15,6 +15,7 @@ TagManager:
   - Sheep
   - Chicken
   - Board
+  - Message
   layers:
   - Default
   - TransparentFX
