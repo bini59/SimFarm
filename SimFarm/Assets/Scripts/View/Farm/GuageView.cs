@@ -15,12 +15,13 @@ namespace View{
 
             private const float width = 160.1f;
             // Start is called before the first frame update
-            void Awake()
+            void OnEnable()
             {
                 presenter = new GuagePresenter(this);
                 int[] energy = presenter.getEnergy();
                 curEnergy = energy[0];
                 maxEnergy = energy[1];
+                Debug.Log(curEnergy);
                 UpdateEnergy(curEnergy);
             }
 

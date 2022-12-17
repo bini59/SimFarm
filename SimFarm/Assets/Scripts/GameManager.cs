@@ -6,17 +6,18 @@ using UnityEngine.Events;
 
 using View.Barn;
 using View.Farm;
+using Model.User;
 
 namespace Simfarm{
     public class GameManager : MonoBehaviourSingletonTemplate<GameManager>
     {
-        [SerializeField]
         private GameObject barn;
         private GameObject shop;
         private GameObject uiEnergy;
         private GameObject uiEnter;
         private GameObject dayend;
         private GameObject end;
+        private GameObject player;
 
         public void toggleBarn(string source) {
             barn.SetActive(!barn.activeSelf);
@@ -31,6 +32,10 @@ namespace Simfarm{
             dayend.SetActive(!dayend.activeSelf);
         }
 
+        public void onEnding() {
+            end.SetActive(true);
+        }
+
         public void onEnter(string source) {
             uiEnter.SetActive(true);
             PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
@@ -43,6 +48,12 @@ namespace Simfarm{
             uiEnter.SetActive(false);
             uiEnter.GetComponent<Button>().onClick.RemoveAllListeners();
 
+        }
+
+        public void onDayEnd() {
+            player.transform.position = new Vector3(1.72f, 0.66f, 0);
+            UserModel.Instance.setEnergyFull();
+            toggleEnergy();
         }
 
         public void toggleEnergy() {
@@ -61,6 +72,7 @@ namespace Simfarm{
             Transform ui = GameObject.Find("Canvas").transform.GetChild(6);
             this.uiEnter = ui.GetChild(0).gameObject;
             this.uiEnergy = ui.GetChild(1).gameObject;
+            this.player = GameObject.Find("Player");
         }
     }
 }

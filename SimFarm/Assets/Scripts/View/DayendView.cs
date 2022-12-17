@@ -27,13 +27,10 @@ namespace View
             {
                 endPanel = GameObject.FindGameObjectsWithTag("endPanel");
                 dayresult = GameObject.FindGameObjectsWithTag("dayResult")[0];
-                dayendPresenter = new DayendPresenter();
+                dayendPresenter = new DayendPresenter(this);
                 Animal[] animallist = dayendPresenter.getAnimalInfo();
-                dayendPresenter.setDay(day);
-                day++;
-                string message;
-                message = dayendPresenter.getDay() + " Day";
-                dayresult.transform.GetComponent<TMPro.TextMeshProUGUI>().text = message;
+                // set day with presenter
+                dayendPresenter.setDay();
 
                 GameObject unclegold = Instantiate(Resources.Load("Prefabs/UncleGold")) as GameObject;
                 unclegold.transform.SetParent(GameObject.Find("Canvas").transform, false);
@@ -92,14 +89,13 @@ namespace View
                 totalGold.transform.localPosition = new Vector3(posX, posY, posZ);
                 totalGold.transform.parent = gameObject.transform;
             }
-
-            // Update is called once per frame
-            void Update()
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    endPanel[0].gameObject.SetActive(false);
-                }
+            public void setDay(int day) {
+                string message;
+                message = day + " Day";
+                dayresult.transform.GetComponent<TMPro.TextMeshProUGUI>().text = message;
+            }
+            public void dayEnd() {
+                dayendPresenter.dayEnd();
             }
         }
     }

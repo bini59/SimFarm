@@ -9,7 +9,7 @@ namespace Model{
     namespace User{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
-            private int day;
+            private int day = 1;
             private int totalscore = 0;
             private int money = 1000;
             private int energy = 3;
@@ -88,13 +88,11 @@ namespace Model{
                 return money;
             }
 
-            public void setDay(int day)
-            {
-                this.day = day;
+            public int getDay() {
+                return day;
             }
-
-            public int getDay()
-            {
+            public int addDay() {
+                day += 1;
                 return day;
             }
 
@@ -118,6 +116,10 @@ namespace Model{
             } 
             public int getCurEnergy() {
                 return this.energy;
+            }
+
+            public void setEnergyFull() {
+                this.energy = this.maxEnergy;
             }
 
         }
