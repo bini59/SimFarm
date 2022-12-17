@@ -41,6 +41,8 @@ namespace View
                 unclegold.transform.parent = gameObject.transform;
 
                 dayendPresenter.setDayendUserMoney(dayendPresenter.getUncleMoney());
+
+                GameObject animal = GetComponent<GameObject>();
                 for (int i = 0; i < animallist.Length; i++)
                 {
                     if (animallist[i] != null)
@@ -49,7 +51,7 @@ namespace View
                         animallist[i].setTurn();
                         if(animallist[i].getTurn() == 0)
                         {
-                            GameObject animal = Instantiate(Resources.Load("Prefabs/DayendAnimal")) as GameObject;
+                            //GameObject animal = Instantiate(Resources.Load("Prefabs/DayendAnimal")) as GameObject;
                             if(animallist[i].animalType() == animaltypes.Cow)
                             {
                                 animal = Instantiate(Resources.Load("Prefabs/DayendCow")) as GameObject;

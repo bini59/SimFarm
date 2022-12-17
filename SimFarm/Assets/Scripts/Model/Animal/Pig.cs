@@ -6,7 +6,7 @@ using Model.Animal;
 public class Pig : Animal
 {
     private int turnMoney = 240;    //각 동물들이 벌어들이는 골드
-    private int turn = 2;        //각 동물들이 골드를 벌어들이는데 사용되는 턴 수
+    private int turn = 1;        //각 동물들이 골드를 벌어들이는데 사용되는 턴 수
     private int score = 0;
     private int isOwned = 2;
     public override int getTurn()
