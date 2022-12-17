@@ -10,7 +10,7 @@ namespace Model{
         {
             private Animal[] animals;
             private int index;
-            private bool isOwned = false;
+            private int animalscore = 0;
             private animaltypes animaltypes;
             public AnimalModel()
             {
@@ -21,6 +21,8 @@ namespace Model{
                 buyAnimal(animaltypes.Horse);
                 buyAnimal(animaltypes.Goat);
                 buyAnimal(animaltypes.Chicken);
+                buyAnimal(animaltypes.Duck);
+                buyAnimal(animaltypes.Pig);
                 // test for create button
             }
             public void buyAnimal(animaltypes animaltypes)
@@ -60,12 +62,14 @@ namespace Model{
             {
                 return animal.getDayendAnimalInfo();
             }
-
-            public bool getIsOwned()
+            public void setAnimalScore(int score)
             {
-                return isOwned;
+                this.animalscore = score;
             }
-
+            public int getAnimalScore()
+            {
+                return this.animalscore;
+            }
             public animaltypes GetAnimaltypes()
             {
                 return animaltypes;

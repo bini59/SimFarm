@@ -9,10 +9,11 @@ namespace Model{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
             private int day;
+            private int totalscore = 0;
             private int money = 1000;
             private int energy = 3;
             private int maxEnergy = 8;
-            private int unclemoney = 1000;
+            private int unclemoney = 200;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
 
             void Awake() {
@@ -94,6 +95,16 @@ namespace Model{
             public int getDay()
             {
                 return day;
+            }
+
+            public void setTotalScore(int score)
+            {
+                this.totalscore += score;
+            }
+
+            public int getTotalScore()
+            {
+                return totalscore;
             }
 
         }
