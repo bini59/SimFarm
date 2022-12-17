@@ -98,14 +98,14 @@ namespace Model{
                 return day;
             }
 
-            public bool redueceEnergy()
+            public int redueceEnergy()
             {
                 if (this.energy <= 0)
                 {
-                    return false;
+                    return -1;
                 }
                 this.energy -= 1;
-                return true;
+                return this.energy;
             }
             public void setTotalScore(int score)
             {
@@ -115,7 +115,10 @@ namespace Model{
             public int getTotalScore()
             {
                 return totalscore;
-        }
+            } 
+            public int getCurEnergy() {
+                return this.energy;
+            }
 
         }
     }

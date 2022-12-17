@@ -27,10 +27,13 @@ namespace View.Barn{
             presenter.actAnimal();
         }
 
+        public void onDayEnd() {
+            presenter.checkEnd();
+        }
+
         public void setMessage() {
             TMPro.TextMeshProUGUI temp = GetComponentInChildren(typeof(TMPro.TextMeshProUGUI)) as TMPro.TextMeshProUGUI;
             temp.text = "temp text";
-            
         }
 
         // Update is called once per frame

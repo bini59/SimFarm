@@ -27,6 +27,10 @@ namespace Simfarm{
             shop.SetActive(!shop.activeSelf);
         }
 
+        public void toggleDay() {
+            dayend.SetActive(!dayend.activeSelf);
+        }
+
         public void onEnter(string source) {
             uiEnter.SetActive(true);
             PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
@@ -38,7 +42,11 @@ namespace Simfarm{
         public void offEnter() {
             uiEnter.SetActive(false);
             uiEnter.GetComponent<Button>().onClick.RemoveAllListeners();
-            
+
+        }
+
+        public void toggleEnergy() {
+            uiEnergy.SetActive(!uiEnergy.activeSelf);
         }
 
         public void redueceEnergy() {
@@ -48,8 +56,8 @@ namespace Simfarm{
         void Awake() {
             this.barn = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
             this.shop = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
-            this.end = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
-            this.dayend = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+            this.end = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+            this.dayend = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
             Transform ui = GameObject.Find("Canvas").transform.GetChild(6);
             this.uiEnter = ui.GetChild(0).gameObject;
             this.uiEnergy = ui.GetChild(1).gameObject;

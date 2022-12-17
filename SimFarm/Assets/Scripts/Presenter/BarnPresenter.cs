@@ -21,9 +21,18 @@ namespace Presenter.Barn{
         }
 
         public void actAnimal() {
-            if(!user.redueceEnergy()) return;
+            int energy = user.redueceEnergy();
+            if(energy == -1) return;
             this.view.setMessage();
             this.manager.redueceEnergy();
+        }
+
+        public void checkEnd() {
+            int energy = user.getCurEnergy();
+            if(energy == 0) {
+                manager.toggleEnergy();
+                manager.toggleDay();
+            }
         }
     }
 }
