@@ -32,6 +32,10 @@ namespace View{
                 rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, curWidth);
             }
 
+            public void redueceEnergy() {
+                UpdateEnergy(curEnergy - 1);
+            }
+
             // Update is called once per frame
             void Update()
             {

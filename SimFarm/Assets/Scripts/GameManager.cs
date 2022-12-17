@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using View.Barn;
+using View.Farm;
 
 namespace Simfarm{
     public class GameManager : MonoBehaviourSingletonTemplate<GameManager>
@@ -10,7 +11,8 @@ namespace Simfarm{
         [SerializeField]
         private GameObject barn;
         private GameObject shop;
-        private GameObject ui;
+        private GameObject uiEnergy;
+        private GameObject uiEnter;
         private GameObject dayend;
         private GameObject end;
 
@@ -22,13 +24,19 @@ namespace Simfarm{
         public void toggleShop() {
             shop.SetActive(!shop.activeSelf);
         }
+
+        public void redueceEnergy() {
+            uiEnergy.transform.GetChild(1).gameObject.GetComponent<GuageView>().redueceEnergy();
+        }
  
         void Awake() {
-            barn = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
-            shop = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
-            end = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
-            dayend = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
-            ui = GameObject.Find("Canvas").transform.GetChild(6).gameObject;
+            this.barn = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+            this.shop = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
+            this.end = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
+            this.dayend = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+            Transform ui = GameObject.Find("Canvas").transform.GetChild(6);
+            this.uiEnter = ui.GetChild(0).gameObject;
+            this.uiEnergy = ui.GetChild(1).gameObject;
         }
     }
 }
