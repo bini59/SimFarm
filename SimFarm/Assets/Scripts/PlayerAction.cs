@@ -53,32 +53,15 @@ public class PlayerAction : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D o)
     {
-        switch (o.gameObject.tag)
-        {
-            case "Pig":
-                manager.toggleBarn("BarnAnimal/pig");
-                break;
-            case "Chicken":
-                manager.toggleBarn("BarnAnimal/chicken");
-                break;
-            case "Horse":
-                manager.toggleBarn("BarnAnimal/horse");
-                break;
-            case "Sheep":
-                manager.toggleBarn("BarnAnimal/sheep");
-                break;
-            case "Duck":
-                manager.toggleBarn("BarnAnimal/duck");
-                break;
-            case "Cow":
-                manager.toggleBarn("BarnAnimal/cow");
-                break;
-            case "Shop":
-                manager.toggleShop();
-                break;
-        }
+        string input = o.gameObject.tag;
+        
+        string tag = input.Equals("Shop") ? input : "BarnAnimal/" + input;
+        manager.onEnter(tag);
 
     }    
+    void OnTriggerExit2D(Collider2D o) {
+        manager.offEnter();
+    }
 
     void FixedUpdate()
     {

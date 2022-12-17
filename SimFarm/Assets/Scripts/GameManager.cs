@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 using View.Barn;
 using View.Farm;
@@ -23,6 +25,15 @@ namespace Simfarm{
 
         public void toggleShop() {
             shop.SetActive(!shop.activeSelf);
+        }
+
+        public void onEnter(string source) {
+            uiEnter.SetActive(true);
+            UnityAction listener = (source.Equals("Shop")) ? delegate { toggleShop(); this.offEnter();  } : delegate { toggleBarn(source); this.offEnter(); };
+            uiEnter.GetComponent<Button>().onClick.AddListener(listener);
+        }
+        public void offEnter() {
+            uiEnter.SetActive(false);
         }
 
         public void redueceEnergy() {
