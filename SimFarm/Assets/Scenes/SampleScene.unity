@@ -5423,7 +5423,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5434,10 +5434,10 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 63622b7797fd4254eb98c3aec88a34c8, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 1803176995, guid: 365dab23e56702d438538d6557c5329e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1803176995, guid: 365dab23e56702d438538d6557c5329e, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -7572,7 +7572,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -280.90973}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1058252710
 MonoBehaviour:
@@ -14546,7 +14546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382, y: 43}
+  m_AnchoredPosition: {x: -329, y: -12}
   m_SizeDelta: {x: 500, y: 413.9698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1258271919
@@ -14569,7 +14569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 097bcccb941f3f44499d6999db14169d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 076d4bc65df3ab34794949bc620c6b9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23637,8 +23637,8 @@ GameObject:
   - component: {fileID: 1753497578}
   - component: {fileID: 1753497577}
   m_Layer: 5
-  m_Name: Sheep Panel
-  m_TagString: Untagged
+  m_Name: Goat Panel
+  m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25890,6 +25890,7 @@ GameObject:
   - component: {fileID: 2033494763}
   - component: {fileID: 2033494764}
   - component: {fileID: 2033494762}
+  - component: {fileID: 2033494765}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -26023,6 +26024,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2033494765
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033494758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f51883ce000f4e43985f70d840c3faa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2059922664
 GameObject:
   m_ObjectHideFlags: 0

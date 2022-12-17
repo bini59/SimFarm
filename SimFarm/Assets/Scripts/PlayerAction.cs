@@ -7,9 +7,13 @@ public class PlayerAction : MonoBehaviour
     float h;
     float v;
     Rigidbody2D rigid;
+    Animator anim;
+    bool isHorizontal;
+    bool isVertical;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -23,6 +27,22 @@ public class PlayerAction : MonoBehaviour
         pos = this.gameObject.transform.position;
         Debug.Log(pos);
         */
+        bool hDown = Input.GetButtonDown("Horizontal");
+        bool vDown = Input.GetButtonDown("Vertical");
+        //animation
+        if(anim.GetInteger("hAxisRaw") != h)
+        {
+            anim.SetBool("isChange", true);
+            anim.SetInteger("hAxisRaw", (int)h);
+
+        }
+        else if (anim.GetInteger("vAxisRaw") != v)
+        {
+            anim.SetBool("isChange", true);
+            anim.SetInteger("vAxisRaw", (int)v);
+        }
+        else
+            anim.SetBool("isChange", false);
 
 
     }
