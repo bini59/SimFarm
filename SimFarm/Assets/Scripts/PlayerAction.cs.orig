@@ -16,9 +16,11 @@ public class PlayerAction : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+<<<<<<< HEAD
         manager = GameManager.Instance;
+=======
         anim = GetComponent<Animator>();
-        
+>>>>>>> main
     }
 
     void Update()

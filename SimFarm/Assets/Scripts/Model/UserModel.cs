@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Simfarm;
+using Enum;
 // usermodel with Singleton pattern
 namespace Model{
     namespace User{
@@ -75,14 +76,14 @@ namespace Model{
             {
                 return unclemoney;
             }
-            public int getDayendUserMoney() {       //ÅäÅ»°ñµåÇÒ ‹š ¾²ÀÚ
+            public int getDayendUserMoney() {       //ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 return money;
             }
             public void setDayendUserMoney(int money) {
                 this.money += money;
             }
 
-            public int getResultUserMoney() {       //ÃÖÁ¾°á°ú °ñµåÇÒ  ‹š ¾²ÀÚ
+            public int getResultUserMoney() {       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 return money;
             }
 
@@ -94,6 +95,14 @@ namespace Model{
             public int getDay()
             {
                 return day;
+            }
+
+            public bool redueceEnergy() {
+                if (this.energy <= 0) {
+                    return false;
+                }
+                this.energy -= 1;
+                return true;
             }
 
         }

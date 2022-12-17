@@ -36,6 +36,7 @@ namespace View{
                 string message;
                 message = res ? "you buy " + equipment.getEquipmentType() : "you can't buy that you don't have enough money";
                 shop.transform.GetComponent<TMPro.TextMeshProUGUI>().text = message;
+                if(res) Destroy(gameObject); // remove when buy success
             }
         }
     }
