@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Check_Box
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 8284690431070618562, guid: 20d6cce5c7ac33b4e97f0f98a09aa347, type: 3}
+  m_DefaultSprite: {fileID: 1803176995, guid: 365dab23e56702d438538d6557c5329e, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 8284690431070618562, guid: 20d6cce5c7ac33b4e97f0f98a09aa347, type: 3}
+    - {fileID: 1803176995, guid: 365dab23e56702d438538d6557c5329e, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
