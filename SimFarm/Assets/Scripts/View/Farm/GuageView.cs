@@ -27,6 +27,7 @@ namespace View{
             public void UpdateEnergy(int energy) {
                 Transform currentEnergy = gameObject.transform.GetChild(1);
                 float curWidth = ((energy) / (float)maxEnergy) * width;
+                curEnergy = energy;
 
                 RectTransform rectTran = currentEnergy.GetComponent<RectTransform>();
                 rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, curWidth);
