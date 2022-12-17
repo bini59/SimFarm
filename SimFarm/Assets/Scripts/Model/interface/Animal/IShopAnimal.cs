@@ -4,5 +4,5 @@ using UnityEngine;
 using Model.Animal;
 public interface IShopAnimal
 {
-    public void buyAnimal();
+    public void buyAnimal(animaltypes animaltypes);
 }
