@@ -29,11 +29,16 @@ namespace Simfarm{
 
         public void onEnter(string source) {
             uiEnter.SetActive(true);
-            UnityAction listener = (source.Equals("Shop")) ? delegate { toggleShop(); this.offEnter();  } : delegate { toggleBarn(source); this.offEnter(); };
+            PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
+            UnityAction listener = (source.Equals("Shop")) 
+            ? delegate { toggleShop(); this.offEnter(); player.moveToggle(); }
+            : delegate { toggleBarn(source); this.offEnter(); player.moveToggle(); };
             uiEnter.GetComponent<Button>().onClick.AddListener(listener);
         }
         public void offEnter() {
             uiEnter.SetActive(false);
+            uiEnter.GetComponent<Button>().onClick.RemoveAllListeners();
+            
         }
 
         public void redueceEnergy() {

@@ -13,6 +13,9 @@ public class PlayerAction : MonoBehaviour
     Animator anim;
     bool isHorizontal;
     bool isVertical;
+    private bool stop = true;
+
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,8 +26,10 @@ public class PlayerAction : MonoBehaviour
 
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        if(stop){
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        }
 
         //좌표를 받아서 사용할 경우
         /*
@@ -51,6 +56,11 @@ public class PlayerAction : MonoBehaviour
 
 
     }
+    
+    public void moveToggle() {
+        this.stop = !this.stop;
+    }
+    
     void OnTriggerEnter2D(Collider2D o)
     {
         string input = o.gameObject.tag;
