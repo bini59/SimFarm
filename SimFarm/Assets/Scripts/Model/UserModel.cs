@@ -47,6 +47,14 @@ namespace Model{
                 return energyInfo;
             }
             public bool buyEquipment(equipments equipment) {
+                for (int i = 0; i < this.equipment.Length; i++) {
+                    if(this.equipment[i].getEquipmentType() != equipment) continue;
+                    int price = this.equipment[i].getPrice();
+                    if(money < price) return false;
+                    this.money -= price;
+                    this.equipment[i].buyEquipment();
+                    GameManager.Instance.updateGold();
+                }
                 return true;
             }
             public Equipment[] getBarnUserEquipment() {
