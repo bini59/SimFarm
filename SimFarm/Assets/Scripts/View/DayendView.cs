@@ -52,7 +52,6 @@ namespace View
 
                 animalObjects[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
                 animalObjects[index].transform.GetChild(0).transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = animal.getTurnMoney().ToString();
-                    dayendPresenter.setDayendUserMoney(animal.getTurnMoney());
                 animalObjects[index].transform.localPosition = new Vector3(posX, posY, posZ);
                 animalObjects[index].transform.parent = gameObject.transform;
             }
