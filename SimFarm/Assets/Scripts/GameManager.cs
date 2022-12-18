@@ -33,6 +33,12 @@ namespace Simfarm{
             barn.GetComponent<BarnView>().setButton(input, messages);
         }
 
+        public void updateTime() {
+            int day = UserModel.Instance.getDay();
+            GameObject timeText = uiEnergy.transform.GetChild(2).GetChild(1).gameObject;
+            timeText.GetComponent<TMPro.TextMeshProUGUI>().text = string.Format("Day {0}", day);
+        }
+
         public void toggleShop() {
             shop.SetActive(!shop.activeSelf);
         }

@@ -62,7 +62,7 @@ namespace Presenter
                 int day = user.addDay();
                 Debug.Log(day);
                 if(day == 31) { manager.onEnding(); }
-                else { manager.onDayEnd(); manager.updateGold(); };
+                else { manager.onDayEnd(); manager.updateGold(); manager.updateTime(); };
             }
         }
     }
