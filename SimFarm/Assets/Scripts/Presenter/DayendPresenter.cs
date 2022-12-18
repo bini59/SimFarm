@@ -49,6 +49,15 @@ namespace Presenter
                 view.setDay(user.getDay());
             }
 
+            public void processGold() {
+                animal.setAnimalTurn();
+                Animal[] animals = animal.getAnimalList();
+                user.earnDayMoney(animals);
+                int money = user.getDayendUserMoney();
+                int uncle = user.getUncleMoney();
+                view.setPanel(animals, money, uncle);
+            }
+
             public void dayEnd() {
                 int day = user.addDay();
                 Debug.Log(day);

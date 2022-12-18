@@ -5,4 +5,6 @@ using Model.Animal;
 public interface IDayendAnimal
 {
     public Animal[] getAnimalList();
+    public void setAnimalTurn();
+    
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Simfarm;
 using Enum;
+using Model.Animal;
 // usermodel with Singleton pattern
 namespace Model{
     namespace User{
@@ -11,8 +12,8 @@ namespace Model{
         {
             private int day = 1;
             private int totalscore = 0;
-            private int money = 1000;
-            private int energy = 3;
+            private int money = 3000;
+            private int energy = 8;
             private int maxEnergy = 8;
             private int unclemoney = 200;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
@@ -122,6 +123,14 @@ namespace Model{
                 this.energy = this.maxEnergy;
             }
 
+
+            public void earnDayMoney(Animal.Animal[] animals) {
+                for (int i = 0; i < 6; i++) {
+                    if(animals[i] == null) continue;
+                    this.money += animals[i].getTurnMoney();
+                }
+                this.money += this.unclemoney;
+            }
         }
     }
 }

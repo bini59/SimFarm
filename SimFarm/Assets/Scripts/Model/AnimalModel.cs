@@ -78,10 +78,23 @@ namespace Model{
                 if(stat.hunger > 0) result += "animal feels full\n"; else if(stat.hunger < 0) result += "animal feels hungry\n";
                 return result;
             }
-
+            
+            public void setAnimalTurn() {
+                for (int i = 0; i < 6; i++) {
+                    if(animals[i] != null){
+                        animals[i].setTurn();
+                    }
+                }
+            }
             public Animal[] getAnimalList()
             {
-                return animals;
+                int n = 0;
+                Animal[] anm = new Animal[6];
+                for (int i = 0; i < 6;i++) {
+                    if(animals[i] != null && animals[i].getTurn() == 0) anm[n++] = animals[i];
+                }
+                
+                return anm;
             }
 
             public int[] getAnimalState(Animal animal)

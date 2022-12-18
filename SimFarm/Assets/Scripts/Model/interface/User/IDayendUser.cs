@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Model.User;
+using Model.Animal;
 public interface IDayendUser
 {
     public int getDayendUserMoney();
@@ -10,4 +11,5 @@ public interface IDayendUser
     public int addDay();
     public int getUncleMoney();
     public void setEnergyFull();
+    public void earnDayMoney(Animal[] animals);
 }
