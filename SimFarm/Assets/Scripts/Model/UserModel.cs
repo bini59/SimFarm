@@ -25,6 +25,14 @@ namespace Model{
                 }
             }
 
+            public bool buyAnimal(int price) {
+                if(money >= price) {
+                    this.money -= price;
+                    return true;
+                }
+                return false;
+            }
+
             public int[] getFarmUserInfo() {
                 int[] userInfo = new int[3];
                 userInfo[0] = money;

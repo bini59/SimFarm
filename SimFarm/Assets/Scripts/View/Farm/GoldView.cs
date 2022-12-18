@@ -18,6 +18,7 @@ public class GoldView : MonoBehaviour
 
     public void updateGold(int gold) {
         string goldString = ""; int index = 0;
+        if(gold == 0) goldString = "0";
         while(gold > 0) {
             if(index%3 == 0 && goldString != "") {
                 goldString = "," + goldString;
