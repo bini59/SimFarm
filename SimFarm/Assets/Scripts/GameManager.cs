@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+using View;
 using View.Barn;
 using View.Farm;
 using Model.User;
 using Model;
+using Model.Animal;
 
 namespace Simfarm{
     public class GameManager : MonoBehaviourSingletonTemplate<GameManager>
@@ -16,6 +18,7 @@ namespace Simfarm{
         private GameObject shop;
         private GameObject uiEnergy;
         private GameObject uiEnter;
+        private GameObject uiBuy;
         private GameObject dayend;
         private GameObject end;
         private GameObject player;
@@ -52,6 +55,14 @@ namespace Simfarm{
         }
 
         public void onEnter(string input) {
+            if(!input.Equals("Shop") && !AnimalModel.Instance.existAnimal(input)) {
+                uiBuy.SetActive(true);
+                int price = AnimalModel.Instance.getAnimalPrice(input);
+                uiBuy.GetComponent<AnimalBuyView>().setPrice(price, input);
+                return;
+            }
+
+
             uiEnter.SetActive(true);
             PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
             UnityAction listener = (input.Equals("Shop")) 
@@ -62,7 +73,8 @@ namespace Simfarm{
         public void offEnter() {
             uiEnter.SetActive(false);
             uiEnter.GetComponent<Button>().onClick.RemoveAllListeners();
-
+            uiBuy.SetActive(false);
+            uiBuy.GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
         public void onDayEnd() {
@@ -87,6 +99,7 @@ namespace Simfarm{
             Transform ui = GameObject.Find("Canvas").transform.GetChild(6);
             this.uiEnter = ui.GetChild(0).gameObject;
             this.uiEnergy = ui.GetChild(1).gameObject;
+            this.uiBuy = ui.GetChild(2).gameObject;
             this.player = GameObject.Find("Player");
         }
     }

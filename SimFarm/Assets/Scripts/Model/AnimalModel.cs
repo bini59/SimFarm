@@ -17,12 +17,12 @@ namespace Model{
                 animals = new Animal[6];
                 index = 0;
 
-                buyAnimal(animaltypes.Cow);
-                buyAnimal(animaltypes.Horse);
-                buyAnimal(animaltypes.Goat);
-                buyAnimal(animaltypes.Chicken);
-                buyAnimal(animaltypes.Duck);
-                buyAnimal(animaltypes.Pig);
+                // buyAnimal(animaltypes.Cow);
+                // buyAnimal(animaltypes.Horse);
+                // buyAnimal(animaltypes.Goat);
+                // buyAnimal(animaltypes.Chicken);
+                // buyAnimal(animaltypes.Duck);
+                // buyAnimal(animaltypes.Pig);
                 // test for create button
             }
             public void buyAnimal(animaltypes animaltypes)
@@ -53,7 +53,8 @@ namespace Model{
 
             }
 
-            public string setState(string animal, ItemStat stat){
+
+            public animaltypes convertString(string animal) {
                 animaltypes temp = 0;
                 switch (animal)
                 {
@@ -64,7 +65,12 @@ namespace Model{
                     case "Duck" : temp = animaltypes.Duck; break;
                     case "Cow" : temp = animaltypes.Cow; break;
                 }
+                return temp;
+            }
+            public string setState(string animal, ItemStat stat){
+                animaltypes temp = convertString(animal);
                 for (int i = 0; i < 6; i++) {
+                    if(animals[i] == null) continue;
                     if (temp == animals[i].animalType()){
                         animals[i].setFeel(animals[i].getFeel()+stat.feel);
                         animals[i].setGrowth(animals[i].getFeel()+stat.growth);
@@ -112,6 +118,31 @@ namespace Model{
             public animaltypes GetAnimaltypes()
             {
                 return animaltypes;
+            }
+
+
+            public bool existAnimal(string animal) {
+                animaltypes type = convertString(animal);
+                for (int i = 0; i < 6; i++) {
+                    if(animals[i] == null) continue;
+                    if(animals[i].animalType() == type) return true;
+                }
+                return false;
+            }
+
+            public int getAnimalPrice(string animal) {
+                animaltypes type = convertString(animal);
+                int price = 0;
+                switch (type)
+                {
+                    case animaltypes.Cow: price = 5000; break;
+                    case animaltypes.Horse: price = 4000; break;
+                    case animaltypes.Goat: price = 3000; break;
+                    case animaltypes.Pig: price = 2000; break;
+                    case animaltypes.Duck: price = 1500; break;
+                    case animaltypes.Chicken: price = 1000; break;
+                }
+                return price;
             }
         }
     }
