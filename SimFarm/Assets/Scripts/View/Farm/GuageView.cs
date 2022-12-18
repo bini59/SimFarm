@@ -15,7 +15,7 @@ namespace View{
 
             private const float width = 160.1f;
             // Start is called before the first frame update
-            void Awake()
+            void OnEnable()
             {
                 presenter = new GuagePresenter(this);
                 int[] energy = presenter.getEnergy();
@@ -27,9 +27,14 @@ namespace View{
             public void UpdateEnergy(int energy) {
                 Transform currentEnergy = gameObject.transform.GetChild(1);
                 float curWidth = ((energy) / (float)maxEnergy) * width;
+                curEnergy = energy;
 
                 RectTransform rectTran = currentEnergy.GetComponent<RectTransform>();
                 rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, curWidth);
+            }
+
+            public void redueceEnergy() {
+                UpdateEnergy(curEnergy - 1);
             }
 
             // Update is called once per frame

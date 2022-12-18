@@ -4,15 +4,16 @@ using UnityEngine;
 
 using Simfarm;
 using Enum;
+using Model.Animal;
 // usermodel with Singleton pattern
 namespace Model{
     namespace User{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
-            private int day;
+            private int day = 1;
             private int totalscore = 0;
-            private int money = 1000;
-            private int energy = 3;
+            private int money = 3000;
+            private int energy = 8;
             private int maxEnergy = 8;
             private int unclemoney = 200;
             private Equipment[] equipment = new Equipment[System.Enum.GetValues(typeof(equipments)).Length];
@@ -21,10 +22,6 @@ namespace Model{
                 DontDestroyOnLoad(gameObject);
                 foreach(int i in System.Enum.GetValues(typeof(equipments))) {
                     equipment[i] = new Equipment((equipments)i);
-                }
-                // log for test
-                foreach(Equipment e in equipment) {
-                    Debug.Log(e.getEquipmentType() + " " + e.getIsOwned());
                 }
             }
 
@@ -88,24 +85,22 @@ namespace Model{
                 return money;
             }
 
-            public void setDay(int day)
-            {
-                this.day = day;
+            public int getDay() {
+                return day;
             }
-
-            public int getDay()
-            {
+            public int addDay() {
+                day += 1;
                 return day;
             }
 
-            public bool redueceEnergy()
+            public int redueceEnergy()
             {
                 if (this.energy <= 0)
                 {
-                    return false;
+                    return -1;
                 }
                 this.energy -= 1;
-                return true;
+                return this.energy;
             }
             public void setTotalScore(int score)
             {
@@ -115,8 +110,23 @@ namespace Model{
             public int getTotalScore()
             {
                 return totalscore;
-        }
+            } 
+            public int getCurEnergy() {
+                return this.energy;
+            }
 
+            public void setEnergyFull() {
+                this.energy = this.maxEnergy;
+            }
+
+
+            public void earnDayMoney(Animal.Animal[] animals) {
+                for (int i = 0; i < 6; i++) {
+                    if(animals[i] == null) continue;
+                    this.money += animals[i].getTurnMoney();
+                }
+                this.money += this.unclemoney;
+            }
         }
     }
 }

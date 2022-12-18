@@ -13,6 +13,9 @@ public class PlayerAction : MonoBehaviour
     Animator anim;
     bool isHorizontal;
     bool isVertical;
+    private bool stop = true;
+
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,8 +26,10 @@ public class PlayerAction : MonoBehaviour
 
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        if(stop){
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        }
 
         //좌표를 받아서 사용할 경우
         /*
@@ -51,34 +56,20 @@ public class PlayerAction : MonoBehaviour
 
 
     }
+    
+    public void moveToggle() {
+        this.stop = !this.stop;
+    }
+    
     void OnTriggerEnter2D(Collider2D o)
     {
-        switch (o.gameObject.tag)
-        {
-            case "Pig":
-                manager.toggleBarn("BarnAnimal/pig");
-                break;
-            case "Chicken":
-                manager.toggleBarn("BarnAnimal/chicken");
-                break;
-            case "Horse":
-                manager.toggleBarn("BarnAnimal/horse");
-                break;
-            case "Sheep":
-                manager.toggleBarn("BarnAnimal/sheep");
-                break;
-            case "Duck":
-                manager.toggleBarn("BarnAnimal/duck");
-                break;
-            case "Cow":
-                manager.toggleBarn("BarnAnimal/cow");
-                break;
-            case "Shop":
-                manager.toggleShop();
-                break;
-        }
+        string input = o.gameObject.tag;
+        manager.onEnter(input);
 
     }    
+    void OnTriggerExit2D(Collider2D o) {
+        manager.offEnter();
+    }
 
     void FixedUpdate()
     {

@@ -9,6 +9,7 @@ public interface IBarnUser
 {
     public int[] getBarnUserEnergy();
     public Equipment[] getBarnUserEquipment();
-    public bool redueceEnergy();
+    public int redueceEnergy();
+    public int getCurEnergy();
 
 }
