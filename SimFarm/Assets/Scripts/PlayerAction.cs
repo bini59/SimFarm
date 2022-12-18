@@ -64,9 +64,7 @@ public class PlayerAction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D o)
     {
         string input = o.gameObject.tag;
-        
-        string tag = input.Equals("Shop") ? input : "BarnAnimal/" + input;
-        manager.onEnter(tag);
+        manager.onEnter(input);
 
     }    
     void OnTriggerExit2D(Collider2D o) {

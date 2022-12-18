@@ -11,6 +11,8 @@ namespace View.Barn{
     {
         BarnPresenter presenter;
 
+        private string animal;
+
         // Start is called before the first frame update
         void Awake()
         {
@@ -29,6 +31,14 @@ namespace View.Barn{
 
         public void onDayEnd() {
             presenter.checkEnd();
+        }
+
+        public void setButton(string animal, string[] messages) {
+            this.animal = animal;
+            Transform panel = gameObject.transform.GetChild(2);
+            for (int i = 0; i < 3; i++) {
+                panel.GetChild(i).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = messages[i];
+            }
         }
 
         public void setMessage() {

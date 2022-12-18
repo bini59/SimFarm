@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using View.Barn;
 using View.Farm;
 using Model.User;
+using Model;
 
 namespace Simfarm{
     public class GameManager : MonoBehaviourSingletonTemplate<GameManager>
@@ -19,9 +20,12 @@ namespace Simfarm{
         private GameObject end;
         private GameObject player;
 
-        public void toggleBarn(string source) {
+        public void toggleBarn(string input) {
             barn.SetActive(!barn.activeSelf);
-            barn.GetComponent<BarnView>().setImage(source);
+            barn.GetComponent<BarnView>().setImage("BarnAnimal/"+input);
+
+            string[] messages = Message.getMessage(input);
+            barn.GetComponent<BarnView>().setButton(input, messages);
         }
 
         public void toggleShop() {
@@ -36,12 +40,12 @@ namespace Simfarm{
             end.SetActive(true);
         }
 
-        public void onEnter(string source) {
+        public void onEnter(string input) {
             uiEnter.SetActive(true);
             PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
-            UnityAction listener = (source.Equals("Shop")) 
+            UnityAction listener = (input.Equals("Shop")) 
             ? delegate { toggleShop(); this.offEnter(); player.moveToggle(); }
-            : delegate { toggleBarn(source); this.offEnter(); player.moveToggle(); };
+            : delegate { toggleBarn(input); this.offEnter(); player.moveToggle(); };
             uiEnter.GetComponent<Button>().onClick.AddListener(listener);
         }
         public void offEnter() {
