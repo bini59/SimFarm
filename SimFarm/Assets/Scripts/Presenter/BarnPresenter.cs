@@ -20,7 +20,7 @@ namespace Presenter.Barn{
             this.manager = GameManager.Instance;
         }
 
-        public void actAnimal() {
+        public void actAnimal(string animal, string message) {
             int energy = user.redueceEnergy();
             if(energy == -1) return;
             this.view.setMessage();
