@@ -54,6 +54,10 @@ namespace Model{
             return equipmentType;
         }
 
+        public void buyEquipment() {
+            this.isOwned = true;
+        }
+
         public ItemStat getItemStat(string animal) {
             if(!isOwned) return new ItemStat(0, 0, 0);
             if(
