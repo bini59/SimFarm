@@ -114,22 +114,22 @@ namespace Model{
             switch (animal)
             {
                 case "Cow":
-                    if (n >= Message.cow_messages.Length) n = Message.cow_messages - 1;
+                    if (n >= Message.cow_messages.Length) n = Message.cow_messages.Length - 1;
                     return Message.cow_messages[n];
                 case "Goat":
-                    if (n >= Message.goat_messages.Length) n = Message.goat_messages - 1;
+                    if (n >= Message.goat_messages.Length) n = Message.goat_messages.Length - 1;
                     return Message.goat_messages[n];
                 case "Chicken":
-                    if (n >= Message.chick_messages.Length) n = Message.chick_messages - 1;
+                    if (n >= Message.chick_messages.Length) n = Message.chick_messages.Length - 1;
                     return Message.chick_messages[n];
                 case "Horse":
-                    if (n >= Message.horse_messages.Length) n = Message.horse_messages - 1;
+                    if (n >= Message.horse_messages.Length) n = Message.horse_messages.Length - 1;
                     return Message.horse_messages[n];
                 case "Duck":
-                    if (n >= Message.duck_messages.Length) n = Message.duck_messages - 1; 
+                    if (n >= Message.duck_messages.Length) n = Message.duck_messages.Length - 1; 
                     return Message.duck_messages[n];
                 case "Pig":
-                    if (n >= Message.pig_messages.Length) n = Message.pig_messages - 1; 
+                    if (n >= Message.pig_messages.Length) n = Message.pig_messages.Length - 1; 
                     return Message.pig_messages[n];
             }
             return "";
