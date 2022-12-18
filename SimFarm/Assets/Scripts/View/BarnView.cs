@@ -43,9 +43,14 @@ namespace View.Barn{
             }
         }
 
-        public void setMessage() {
+        public void setMessage(string message) {
             TMPro.TextMeshProUGUI temp = GetComponentInChildren(typeof(TMPro.TextMeshProUGUI)) as TMPro.TextMeshProUGUI;
-            temp.text = "temp text";
+            temp.text = message;
+        }
+
+        public void clearMessage() {
+            TMPro.TextMeshProUGUI temp = GetComponentInChildren(typeof(TMPro.TextMeshProUGUI)) as TMPro.TextMeshProUGUI;
+            temp.text = "";
         }
 
         // Update is called once per frame

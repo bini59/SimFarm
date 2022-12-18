@@ -4,6 +4,8 @@ using UnityEngine;
 
 using Enum;
 
+
+
 namespace Model{
     public class Message
     {
@@ -12,10 +14,45 @@ namespace Model{
         private static string[] duck_messages = { "egging", "swimming" };
         private static string[] goat_messages = { "milk" };
         private static string[] pig_messages = { "swim dirt", "feed fruit" };
-        private static string[] horse_messages = { "feed fruit", "walking", "racing", "riding" };
-        private static string[] cow_messages = { "digging", "fighting" };
+        private static string[] horse_messages = { "feed fruit", "walking", "riding" };
+        private static string[] cow_messages = { "digging" };
 
+        // stat : feel growth hunger
+        private static ItemStat[] all_stat = { new ItemStat(0, 3, 4), new ItemStat(1, 0, 0), new ItemStat(2, 0, 0), new ItemStat(4, 0, 0) };
+        private static ItemStat[] chick_stat = { new ItemStat(0, 5, 0)  };
+        private static ItemStat[] duck_stat = { new ItemStat( 0, 5, 0 ), new ItemStat( 3, 0, 0 ) };
+        private static ItemStat[] goat_stat = { new ItemStat( 0, 5, -2 ) };
+        private static ItemStat[] pig_stat = { new ItemStat( 5, 0, 0), new ItemStat( 3, 0, 2) };
+        private static ItemStat[] horse_stat = { new ItemStat( 3, 0, 2), new ItemStat( 6, 0, -2), new ItemStat( 1, 0, -1) };
+        private static ItemStat[] cow_stat = { new ItemStat( -1, 2, -1) };
 
+        public static ItemStat getStat(string animal, string message) {
+            for (int i = 0; i < 4; i++) {
+                if(message.Equals(all_messages[i])) return all_stat[i];
+            }
+            switch (animal)
+            {
+                case "Pig":
+                    for (int i = 0; i < 2; i++) if(message.Equals(pig_messages[i])) return pig_stat[i];
+                    break;
+                case "Chicken":
+                    for (int i = 0; i < 1; i++) if(message.Equals(chick_messages[i])) return chick_stat[i];
+                    break;
+                case "Duck":
+                    for (int i = 0; i < 2; i++) if(message.Equals(duck_messages[i])) return duck_stat[i];
+                    break;
+                case "Goat":
+                    for (int i = 0; i < 1; i++) if(message.Equals(goat_messages[i])) return goat_stat[i];
+                    break;
+                case "Horse":
+                    for (int i = 0; i < 3; i++) if(message.Equals(horse_messages[i])) return horse_stat[i];
+                    break;
+                case "Cow":
+                    for (int i = 0; i < 1; i++) if(message.Equals(cow_messages[i])) return cow_stat[i];
+                    break;
+            }
+            return new ItemStat( 0, 0, 0 );
+        }
 
         private static int[] getLength(string name) {
             int[] length = new int[2];

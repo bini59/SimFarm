@@ -54,8 +54,8 @@ namespace Model{
             return equipmentType;
         }
 
-        public int[] getItemStat(string animal) {
-            if(!isOwned) return new int[3] { 0, 0, 0 };
+        public ItemStat getItemStat(string animal) {
+            if(!isOwned) return new ItemStat(0, 0, 0);
             if(
                 equipmentType == equipments.low_food ||
                 equipmentType == equipments.mid_food ||
@@ -64,7 +64,7 @@ namespace Model{
                 equipmentType == equipments.low_cleaner ||
                 equipmentType == equipments.mid_cleaner ||
                 equipmentType == equipments.high_cleaner
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
 
 
             if (
@@ -73,7 +73,7 @@ namespace Model{
                     equipmentType == equipments.low_incubator ||
                     equipmentType == equipments.high_incubator
                 )
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
 
             if (
                 (animal.Equals("Horse") ) &&
@@ -81,7 +81,7 @@ namespace Model{
                     equipmentType == equipments.wood_horseshoe ||
                     equipmentType == equipments.iron_horseshoe
                 )
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
 
             if (
                 (animal.Equals("Cow") ) &&
@@ -89,7 +89,7 @@ namespace Model{
                     equipmentType == equipments.old_grandfather_cloth ||
                     equipmentType == equipments.new_grandfather_cloth
                 )
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
 
             if (
                 (animal.Equals("Pig")) &&
@@ -97,7 +97,7 @@ namespace Model{
                     equipmentType == equipments.clean_mud ||
                     equipmentType == equipments.normal_mud
                 )
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
 
             if (
                 (animal.Equals("Goat")) &&
@@ -105,7 +105,9 @@ namespace Model{
                     equipmentType == equipments.high_dehorner ||
                     equipmentType == equipments.low_dehorner
                 )
-            ) return new int[3] { feel, growth, hunger };
+            ) return new ItemStat( feel, growth, hunger );
+
+            return new ItemStat(0, 0, 0);
         }
     }
 

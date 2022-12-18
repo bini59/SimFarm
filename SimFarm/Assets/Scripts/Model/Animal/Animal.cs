@@ -79,6 +79,12 @@ namespace Model{
             {
                 return animal;
             }
+            public int getHunger(){
+                return this.hunger;
+            }
+            public void setHunger(int hunger) {
+                this.hunger = hunger;
+            } 
             public void feed()
             {
                 this.hunger += 3;

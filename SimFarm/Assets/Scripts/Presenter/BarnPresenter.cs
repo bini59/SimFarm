@@ -4,6 +4,7 @@ using UnityEngine;
 
 using View.Barn;
 using Model.User;
+using Model.Animal;
 using Model;
 using Simfarm;
 
@@ -13,26 +14,33 @@ namespace Presenter.Barn{
     {
         BarnView view;
         IBarnUser user;
+        IBarnAnimal animal;
         GameManager manager;
 
         public BarnPresenter(BarnView View) {
             this.view = View;
             this.user = UserModel.Instance;
             this.manager = GameManager.Instance;
+            this.animal = AnimalModel.Instance;
         }
 
-        public void actAnimal(string animal, string message) {
-            int[] growth = new int[3];
+        public void actAnimal(string animal_name, string message) {
+            ItemStat itemStat = new ItemStat(0, 0, 0);
             Equipment[] equipment = user.getBarnUserEquipment();
             foreach(var e in equipment) {
-                int[] temp = e.getItemStat(animal);
-                for (int i = 0; i < 3; i++) growth[i] += temp[i];
+                ItemStat temp = e.getItemStat(animal_name);
+                itemStat.feel += temp.feel;
+                itemStat.growth += temp.growth;
+                itemStat.hunger += temp.hunger;
             }
-            
+            ItemStat actStat = Message.getStat(animal_name, message);
+            actStat.feel += itemStat.feel; actStat.growth += itemStat.growth; actStat.hunger += itemStat.hunger;
+
 
             int energy = user.redueceEnergy();
             if(energy == -1) return;
-            this.view.setMessage();
+            string res = this.animal.setState(animal_name, actStat);
+            this.view.setMessage(res);
             this.manager.redueceEnergy();
         }
 
