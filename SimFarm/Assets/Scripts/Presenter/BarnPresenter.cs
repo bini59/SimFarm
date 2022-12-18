@@ -4,6 +4,7 @@ using UnityEngine;
 
 using View.Barn;
 using Model.User;
+using Model;
 using Simfarm;
 
 
@@ -21,6 +22,14 @@ namespace Presenter.Barn{
         }
 
         public void actAnimal(string animal, string message) {
+            int[] growth = new int[3];
+            Equipment[] equipment = user.getBarnUserEquipment();
+            foreach(var e in equipment) {
+                int[] temp = e.getItemStat(animal);
+                for (int i = 0; i < 3; i++) growth[i] += temp[i];
+            }
+            
+
             int energy = user.redueceEnergy();
             if(energy == -1) return;
             this.view.setMessage();

@@ -53,6 +53,60 @@ namespace Model{
         public equipments getEquipmentType() {
             return equipmentType;
         }
+
+        public int[] getItemStat(string animal) {
+            if(!isOwned) return new int[3] { 0, 0, 0 };
+            if(
+                equipmentType == equipments.low_food ||
+                equipmentType == equipments.mid_food ||
+                equipmentType == equipments.high_food ||
+                equipmentType == equipments.high_barn ||
+                equipmentType == equipments.low_cleaner ||
+                equipmentType == equipments.mid_cleaner ||
+                equipmentType == equipments.high_cleaner
+            ) return new int[3] { feel, growth, hunger };
+
+
+            if (
+                (animal.Equals("Chicken") || animal.Equals("Duck")) &&
+                (
+                    equipmentType == equipments.low_incubator ||
+                    equipmentType == equipments.high_incubator
+                )
+            ) return new int[3] { feel, growth, hunger };
+
+            if (
+                (animal.Equals("Horse") ) &&
+                (
+                    equipmentType == equipments.wood_horseshoe ||
+                    equipmentType == equipments.iron_horseshoe
+                )
+            ) return new int[3] { feel, growth, hunger };
+
+            if (
+                (animal.Equals("Cow") ) &&
+                (
+                    equipmentType == equipments.old_grandfather_cloth ||
+                    equipmentType == equipments.new_grandfather_cloth
+                )
+            ) return new int[3] { feel, growth, hunger };
+
+            if (
+                (animal.Equals("Pig")) &&
+                (
+                    equipmentType == equipments.clean_mud ||
+                    equipmentType == equipments.normal_mud
+                )
+            ) return new int[3] { feel, growth, hunger };
+
+            if (
+                (animal.Equals("Goat")) &&
+                (
+                    equipmentType == equipments.high_dehorner ||
+                    equipmentType == equipments.low_dehorner
+                )
+            ) return new int[3] { feel, growth, hunger };
+        }
     }
 
 }
