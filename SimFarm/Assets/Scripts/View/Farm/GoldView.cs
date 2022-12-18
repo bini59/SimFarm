@@ -13,6 +13,10 @@ public class GoldView : MonoBehaviour
     {
         this.presenter = new GoldPresenter();
         gold = presenter.getGold();
+        updateGold(gold);
+    }
+
+    public void updateGold(int gold) {
         string goldString = ""; int index = 0;
         while(gold > 0) {
             if(index%3 == 0 && goldString != "") {

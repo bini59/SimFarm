@@ -20,6 +20,11 @@ namespace Simfarm{
         private GameObject end;
         private GameObject player;
 
+
+        public void updateGold() {
+            int gold = UserModel.Instance.getDayendUserMoney();
+            uiEnergy.transform.GetChild(3).gameObject.GetComponent<GoldView>().updateGold(gold);
+        }
         public void toggleBarn(string input) {
             barn.SetActive(!barn.activeSelf);
             barn.GetComponent<BarnView>().setImage("BarnAnimal/"+input);

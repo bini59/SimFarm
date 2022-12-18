@@ -52,8 +52,8 @@ namespace Presenter
             public void dayEnd() {
                 int day = user.addDay();
                 Debug.Log(day);
-                if(day == 3) { manager.onEnding(); }
-                else { manager.onDayEnd(); };
+                if(day == 31) { manager.onEnding(); }
+                else { manager.onDayEnd(); manager.updateGold(); };
             }
         }
     }
