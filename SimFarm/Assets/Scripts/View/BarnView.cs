@@ -21,7 +21,6 @@ namespace View.Barn{
         }
 
         public void setImage(string src) {
-            print("animal");
             Transform image = gameObject.transform.GetChild(0);
             image.GetComponent<Image>().sprite = Resources.Load<Sprite>(src);
         }

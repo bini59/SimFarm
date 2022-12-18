@@ -21,7 +21,6 @@ namespace View{
                 int[] energy = presenter.getEnergy();
                 curEnergy = energy[0];
                 maxEnergy = energy[1];
-                Debug.Log(curEnergy);
                 UpdateEnergy(curEnergy);
             }
 

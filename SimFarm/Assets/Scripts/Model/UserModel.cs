@@ -23,10 +23,6 @@ namespace Model{
                 foreach(int i in System.Enum.GetValues(typeof(equipments))) {
                     equipment[i] = new Equipment((equipments)i);
                 }
-                // log for test
-                foreach(Equipment e in equipment) {
-                    Debug.Log(e.getEquipmentType() + " " + e.getIsOwned());
-                }
             }
 
             public int[] getFarmUserInfo() {
