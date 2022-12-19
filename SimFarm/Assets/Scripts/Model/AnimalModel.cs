@@ -10,20 +10,11 @@ namespace Model{
         {
             private Animal[] animals;
             private int index;
-            private int animalscore = 0;
             private animaltypes animaltypes;
             public AnimalModel()
             {
                 animals = new Animal[6];
                 index = 0;
-
-                // buyAnimal(animaltypes.Cow);
-                // buyAnimal(animaltypes.Horse);
-                // buyAnimal(animaltypes.Goat);
-                // buyAnimal(animaltypes.Chicken);
-                // buyAnimal(animaltypes.Duck);
-                // buyAnimal(animaltypes.Pig);
-                // test for create button
             }
             public void buyAnimal(animaltypes animaltypes)
             {
@@ -117,18 +108,6 @@ namespace Model{
             {
                 return animal.getDayendAnimalInfo();
             }
-            public void setAnimalScore(int score)
-            {
-                this.animalscore = score;
-            }
-            public int getAnimalScore()
-            {
-                return this.animalscore;
-            }
-            public animaltypes GetAnimaltypes()
-            {
-                return animaltypes;
-            }
 
 
             public bool existAnimal(string animal) {
@@ -153,6 +132,15 @@ namespace Model{
                     case animaltypes.Chicken: price = 1000; break;
                 }
                 return price;
+            }
+
+            public int calculateScore() {
+                int score = 0;
+                for (int i = 0; i < 6; i ++) {
+                    if(animals[i] ==null) continue;
+                    score += animals[i].getScore();
+                }
+                return score;
             }
         }
     }

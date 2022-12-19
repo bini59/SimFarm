@@ -11,7 +11,6 @@ namespace Model{
         public class UserModel : MonoBehaviourSingletonTemplate<UserModel>, IFarmUser, IBarnUser, IDayendUser, IResultUser, IShopUser
         {
             private int day = 1;
-            private int totalscore = 0;
             private int money = 3000;
             private int energy = 8;
             private int maxEnergy = 8;
@@ -120,12 +119,12 @@ namespace Model{
             }
             public void setTotalScore(int score)
             {
-                this.totalscore += score;
+                score = 1;
             }
 
             public int getTotalScore()
             {
-                return totalscore;
+                return (int) (money / (float)27420);
             } 
             public int getCurEnergy() {
                 return this.energy;

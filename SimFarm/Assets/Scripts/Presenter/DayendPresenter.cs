@@ -27,23 +27,6 @@ namespace Presenter
                 manager = GameManager.Instance;
                 this.view = view;
             }
-            
-            public Animal[] getAnimalInfo()
-            {
-                return animal.getAnimalList();
-            }
-            public int getUncleMoney()
-            {
-                return user.getUncleMoney();
-            }
-            public int getDayendUserMoney()
-            {
-                return user.getDayendUserMoney();
-            }
-            public void setDayendUserMoney(int money)
-            {
-                user.setDayendUserMoney(money);
-            }
 
             public void setDay() {
                 view.setDay(user.getDay());
