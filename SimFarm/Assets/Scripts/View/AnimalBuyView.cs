@@ -12,6 +12,9 @@ namespace View{
         private string animal;
         private AnimalBuyPresenter presenter;
 
+        [SerializeField]
+        private GameObject ui;
+
         void Awake() {
             presenter = new AnimalBuyPresenter(this);
         }
@@ -27,6 +30,7 @@ namespace View{
         }
 
         public void offButton() {
+            ui.GetComponent<AudioSource>().Play();
             gameObject.SetActive(false);
         }
     }
