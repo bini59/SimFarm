@@ -49,7 +49,7 @@ namespace View
             private void goldScore(int score, int index) {
                 instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/GoldScore")) as GameObject;
                 instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
-                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text =  "°ñµåÁ¡¼ö : " + score;
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text =  "ê³¨ë“œì ìˆ˜ : " + score;
                 instances[index].transform.parent = gameObject.transform;
             }
 
@@ -78,14 +78,14 @@ namespace View
                         break;
                 }
                 instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
-                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "Á¡¼ö : " + score;
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "ì ìˆ˜ : " + score;
                 instances[index].transform.parent = gameObject.transform;
             }
 
             private void totalSocre(int score, int index) {
                 instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/TotalScore")) as GameObject;
                 instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
-                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "ÃÖÁ¾Á¡¼ö : " + score;
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "ìµœì¢…ì ìˆ˜ : " + score;
                 instances[index].transform.parent = gameObject.transform;
             }
         }
