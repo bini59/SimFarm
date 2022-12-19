@@ -23,6 +23,15 @@ namespace Model{
                     equipment[i] = new Equipment((equipments)i);
                 }
             }
+            public void initialize() {
+                this.day = 1;
+                this.money = 3000;
+                this.energy = 8;
+                this.maxEnergy = 8;
+                foreach(int i in System.Enum.GetValues(typeof(equipments))) {
+                    equipment[i] = new Equipment((equipments)i);
+                }
+            }
 
             public bool buyAnimal(int price) {
                 if(money >= price) {

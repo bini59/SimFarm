@@ -8,6 +8,8 @@ using Model;
 using Model.User;
 using Model.Animal;
 
+using Simfarm;
+
 using Presenter.Result;
 
 namespace View
@@ -114,6 +116,10 @@ namespace View
                 instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
                 instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "최종점수 : " + score;
                 instances[index].transform.parent = gameObject.transform;
+            }
+
+            public void initialize() {
+                GameManager.Instance.initialize();
             }
         }
     }

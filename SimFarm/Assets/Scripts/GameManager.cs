@@ -34,6 +34,11 @@ namespace Simfarm{
             }
         }
 
+        public void initialize() {
+            UserModel.Instance.initialize();
+            AnimalModel.Instance.initialize();
+        }
+
         public void updateGold() {
             int gold = UserModel.Instance.getDayendUserMoney();
             uiEnergy.transform.GetChild(3).gameObject.GetComponent<GoldView>().updateGold(gold);

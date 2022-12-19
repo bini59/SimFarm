@@ -10,11 +10,15 @@ namespace Model{
         {
             private Animal[] animals;
             private int index;
-            private animaltypes animaltypes;
             public AnimalModel()
             {
                 animals = new Animal[6];
                 index = 0;
+            }
+
+            public void initialize() {
+                this.animals = new Animal[6];
+                this.index = 0;
             }
             public void buyAnimal(animaltypes animaltypes)
             {
