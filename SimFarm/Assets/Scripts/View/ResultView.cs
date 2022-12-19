@@ -29,12 +29,14 @@ namespace View
             private GameObject text;
             [SerializeField]
             private GameObject grid;
-
+            [SerializeField]
+            private GameObject ui;
             void Start()
             {
                 resultPresenter = new ResultPresenter(this);
                 resultPresenter.processScore();
                 grid.GetComponent<AudioSource>().Stop();
+                ui.SetActive(false);
             }
 
             public void setResultPanel(int[] scores, Animal[] animals) {
