@@ -9,13 +9,13 @@ using Enum;
 namespace Model{
     public class Message
     {
-        private static string[] all_messages = {"feeding", "washing", "cleaning", "playing"};
-        private static string[] chick_messages = { "egging" };
-        private static string[] duck_messages = { "egging", "swimming" };
-        private static string[] goat_messages = { "milk" };
-        private static string[] pig_messages = { "swim dirt", "feed fruit" };
-        private static string[] horse_messages = { "feed fruit", "walking", "riding" };
-        private static string[] cow_messages = { "digging" };
+        private static string[] all_messages = {"먹이주기", "씻기기", "축사 청소하기", "놀아주기"};
+        private static string[] chick_messages = { "알 낳기" };
+        private static string[] duck_messages = { "알 낳기", "수영하기" };
+        private static string[] goat_messages = { "젖 짜기" };
+        private static string[] pig_messages = { "진흙 목욕 하기", "과일 주기" };
+        private static string[] horse_messages = { "과일 주기", "산책하기", "승마" };
+        private static string[] cow_messages = { "땅 갈기" };
 
         // stat : feel growth hunger
         private static ItemStat[] all_stat = { new ItemStat(0, 3, 4), new ItemStat(1, 0, 0), new ItemStat(2, 0, 0), new ItemStat(4, 0, 0) };

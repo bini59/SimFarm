@@ -14,6 +14,9 @@ public class PlayerAction : MonoBehaviour
     bool isHorizontal;
     bool isVertical;
     private bool stop = true;
+    private AudioSource audioSource;
+
+    private bool soundPlay = true;
 
 
     void Awake()
@@ -21,7 +24,13 @@ public class PlayerAction : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         manager = GameManager.Instance;
         anim = GetComponent<Animator>();
-        
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private IEnumerator _soundPlay() {
+        yield return new WaitForSeconds(0.3f);
+        audioSource.Play();
+        soundPlay = true;
     }
 
     void Update()
@@ -29,6 +38,10 @@ public class PlayerAction : MonoBehaviour
         if(stop){
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
+        }
+        if(rigid.velocity.magnitude > 0 && soundPlay){
+            StartCoroutine(_soundPlay());
+            soundPlay = false;
         }
 
         //좌표를 받아서 사용할 경우
@@ -44,6 +57,7 @@ public class PlayerAction : MonoBehaviour
         {
             anim.SetBool("isChange", true);
             anim.SetInteger("hAxisRaw", (int)h);
+            
 
         }
         else if (anim.GetInteger("vAxisRaw") != v)

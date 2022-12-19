@@ -20,7 +20,6 @@ namespace View
             private float posX = 0F;
             private float posY = 60.0F;
             private float posZ = 0F;
-            private int day = 1;
 
             private GameObject[] animalObjects = new GameObject[6];
             private GameObject uncle;

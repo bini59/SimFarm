@@ -10,20 +10,15 @@ namespace Model{
         {
             private Animal[] animals;
             private int index;
-            private int animalscore = 0;
-            private animaltypes animaltypes;
             public AnimalModel()
             {
                 animals = new Animal[6];
                 index = 0;
+            }
 
-                // buyAnimal(animaltypes.Cow);
-                // buyAnimal(animaltypes.Horse);
-                // buyAnimal(animaltypes.Goat);
-                // buyAnimal(animaltypes.Chicken);
-                // buyAnimal(animaltypes.Duck);
-                // buyAnimal(animaltypes.Pig);
-                // test for create button
+            public void initialize() {
+                this.animals = new Animal[6];
+                this.index = 0;
             }
             public void buyAnimal(animaltypes animaltypes)
             {
@@ -79,9 +74,9 @@ namespace Model{
                 }
 
                 string result = "";
-                if(stat.feel > 0) result += "animal feels good\n"; else if(stat.feel < 0) result += "animal feels bad\n";
-                if(stat.growth > 0) result += "animal grow up\n"; else if(stat.growth < 0) result += "animal grow down\n";
-                if(stat.hunger > 0) result += "animal feels full\n"; else if(stat.hunger < 0) result += "animal feels hungry\n";
+                if(stat.feel > 0) result += "기분이 좋아졌다!\n"; else if(stat.feel < 0) result += "기분이 나빠졌다...\n";
+                if(stat.growth > 0) result += "쑥쑥 자라고 있는 느낌이다!\n"; else if(stat.growth < 0) result += "점점 초췌해지는 느낌이 든다...\n";
+                if(stat.hunger > 0) result += "배가 차서 기뻐 보인다!\n"; else if(stat.hunger < 0) result += "배가 고파 보인다...\n";
                 return result;
             }
             
@@ -117,18 +112,6 @@ namespace Model{
             {
                 return animal.getDayendAnimalInfo();
             }
-            public void setAnimalScore(int score)
-            {
-                this.animalscore = score;
-            }
-            public int getAnimalScore()
-            {
-                return this.animalscore;
-            }
-            public animaltypes GetAnimaltypes()
-            {
-                return animaltypes;
-            }
 
 
             public bool existAnimal(string animal) {
@@ -153,6 +136,15 @@ namespace Model{
                     case animaltypes.Chicken: price = 1000; break;
                 }
                 return price;
+            }
+
+            public int calculateScore() {
+                int score = 0;
+                for (int i = 0; i < 6; i ++) {
+                    if(animals[i] ==null) continue;
+                    score += animals[i].getScore();
+                }
+                return score;
             }
         }
     }

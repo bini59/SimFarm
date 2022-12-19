@@ -22,7 +22,22 @@ namespace Simfarm{
         private GameObject dayend;
         private GameObject end;
         private GameObject player;
+        private GameObject pause;
 
+
+        void Update() {
+            if(Input.GetButtonDown("Cancel") && !GameObject.Find("Canvas").transform.GetChild(1).gameObject.activeSelf && !pause.activeSelf) {
+                pause.SetActive(true);
+            }
+            else if(Input.GetButtonDown("Cancel") && pause.activeSelf) {
+                pause.SetActive(false);
+            }
+        }
+
+        public void initialize() {
+            UserModel.Instance.initialize();
+            AnimalModel.Instance.initialize();
+        }
 
         public void updateGold() {
             int gold = UserModel.Instance.getDayendUserMoney();
@@ -64,10 +79,10 @@ namespace Simfarm{
 
 
             uiEnter.SetActive(true);
-            PlayerAction player = GameObject.Find("Player").transform.GetComponent<PlayerAction>();
+            PlayerAction player_action = player.transform.GetComponent<PlayerAction>();
             UnityAction listener = (input.Equals("Shop")) 
-            ? delegate { toggleShop(); this.offEnter(); player.moveToggle(); }
-            : delegate { toggleBarn(input); this.offEnter(); player.moveToggle(); };
+            ? delegate { toggleShop(); this.offEnter(); player_action.moveToggle(); }
+            : delegate { toggleBarn(input); this.offEnter(); player_action.moveToggle(); };
             uiEnter.GetComponent<Button>().onClick.AddListener(listener);
         }
         public void offEnter() {
@@ -101,6 +116,7 @@ namespace Simfarm{
             this.uiEnergy = ui.GetChild(1).gameObject;
             this.uiBuy = ui.GetChild(2).gameObject;
             this.player = GameObject.Find("Player");
+            this.pause = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
         }
     }
 }

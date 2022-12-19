@@ -32,7 +32,7 @@ namespace View{
                     GameObject equipment = Instantiate(Resources.Load("Prefabs/Equipment")) as GameObject;
                     equipment.transform.SetParent(GameObject.Find("Canvas").transform, false);
                     equipment.transform.localPosition = new Vector3(initX, initY + space * i, initZ);
-                    equipment.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<TMPro.TextMeshProUGUI>().text = shopEquipment[i].getEquipmentType().ToString();
+                    equipment.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<TMPro.TextMeshProUGUI>().text = shopEquipment[i].equipmentName();
                     equipment.transform.GetComponent<ItemView>().setEquipment(shopEquipment[i]);
                     equipment.transform.parent = gameObject.transform;
                     equipments[i] = equipment;

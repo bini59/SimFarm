@@ -8,6 +8,8 @@ using Model;
 using Model.User;
 using Model.Animal;
 
+using Simfarm;
+
 using Presenter.Result;
 
 namespace View
@@ -19,67 +21,105 @@ namespace View
             private GameObject[] endPanel;
             private GameObject dayresult;
             private ResultPresenter resultPresenter;
-            private float posX = 0.0F;
-            private float posY = 60.0F;
-            private float posZ = 0F;
-            private float maxGold = 27240.0f;
-            private float maxDay = 30.0f;
+            private GameObject[] instances;
 
-            private void Start()
+            [SerializeField]
+            private AudioClip[] audioClips;
+            [SerializeField]
+            private AudioSource audioSource;
+            [SerializeField]
+            private GameObject text;
+            [SerializeField]
+            private GameObject grid;
+            [SerializeField]
+            private GameObject ui;
+            void Start()
             {
-                resultPresenter = new ResultPresenter();
-                Animal[] animallist = resultPresenter.getAnimalInfo();
+                resultPresenter = new ResultPresenter(this);
+                resultPresenter.processScore();
+                grid.GetComponent<AudioSource>().Stop();
+                ui.SetActive(false);
+            }
 
-                GameObject resultGold = Instantiate(Resources.Load("Prefabs/ScorePrefabs/GoldScore")) as GameObject;
-                resultGold.transform.SetParent(GameObject.Find("Canvas").transform, false);
-                string message;
-                message = "������� : " + (int)(resultPresenter.getResultUserMoney() / maxGold * maxDay);
-                resultPresenter.setTotalScore((int)(resultPresenter.getResultUserMoney() / maxGold * maxDay));
-                resultGold.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = message;
-                //resultGold.transform.localPosition = new Vector3(posX, posY, posZ);
-                resultGold.transform.parent = gameObject.transform;
-                for (int i = 0; i < animallist.Length; i++)
-                {
-                    if (animallist[i] != null)
-                    {
-                        GameObject animal = Instantiate(Resources.Load("Prefabs/DayendAnimal")) as GameObject;
-                        if (animallist[i].animalType() == animaltypes.Cow)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/CowScore")) as GameObject;
-                        }
-                        if (animallist[i].animalType() == animaltypes.Horse)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/HorseScore")) as GameObject;
-                        }
-                        if (animallist[i].animalType() == animaltypes.Goat)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/GoatScore")) as GameObject;
-                        }
-                        if (animallist[i].animalType() == animaltypes.Pig)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/PigScore")) as GameObject;
-                        }
-                        if (animallist[i].animalType() == animaltypes.Duck)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/DuckScore")) as GameObject;
-                        }
-                        if (animallist[i].animalType() == animaltypes.Chicken)
-                        {
-                            animal = Instantiate(Resources.Load("Prefabs/ScorePrefabs/ChickenScore")) as GameObject;
-                        }
-                        animal.transform.SetParent(GameObject.Find("Canvas").transform, false);
-                        resultPresenter.setAnimalScore(animallist[i].getScore());
-                        resultPresenter.setTotalScore(animallist[i].getScore());
-                        message = "���� : " + resultPresenter.getAnimalScore();
-                        animal.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = message;
-                        animal.transform.parent = gameObject.transform;
-                    }
+            public void setResultPanel(int[] scores, Animal[] animals) {
+                int n_instance = 1;
+                for (int i = 0; i < 7; i ++) if(scores[i] != -1) n_instance++;
+                instances = new GameObject[n_instance];
+
+                int index = 0; int score = 0;
+                goldScore(scores[6], index++); score += scores[6];
+                for (int i = 0; i < 6; i++) {
+                    if(scores[i] == -1) continue;
+                    animalScore(scores[i], index++, animals[i].animalType());
+                    score += scores[i];
                 }
-                GameObject totalscore = Instantiate(Resources.Load("Prefabs/ScorePrefabs/TotalScore")) as GameObject;
-                totalscore.transform.SetParent(GameObject.Find("Canvas").transform, false);
-                message = "�������� : " + resultPresenter.getTotalScore();
-                totalscore.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = message;
-                totalscore.transform.parent = gameObject.transform;
+                totalSocre(score, index++);
+
+                playSound(score);
+                setText(score);
+            }
+
+            private void setText(int score) {
+                Text textComponent = text.GetComponent<Text>();
+                string message = "";
+                if(score >= 70) message= "잘했네, 농삿일 계속 해도 되겠어!";
+                else if (score >= 30) message= "이 정도면 먹고 살만큼은 하겠구만..";
+                else message= "당장 도시로 돌아가지 않으면 굶어 죽을걸세,\n 당장 떠나게!!";
+                textComponent.text = message;
+            }
+
+            private void playSound(int score) {
+                if(score >= 70) audioSource.clip = audioClips[0];
+                else if (score >= 30) audioSource.clip = audioClips[1];
+                else audioSource.clip = audioClips[2];
+                audioSource.Play();
+            }
+
+            private void goldScore(int score, int index) {
+                instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/GoldScore")) as GameObject;
+                instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text =  "골드점수 : " + score;
+                instances[index].transform.parent = gameObject.transform;
+            }
+
+            private void animalScore(int score, int index, animaltypes type) {
+                instances[index] = Instantiate(Resources.Load("Prefabs/DayendAnimal")) as GameObject;
+                instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/CowScore")) as GameObject;
+                switch (type)
+                {
+                    case animaltypes.Cow:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/CowScore")) as GameObject;
+                        break;
+                    case animaltypes.Horse:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/HorseScore")) as GameObject;
+                        break;
+                    case animaltypes.Duck:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/DuckScore")) as GameObject;
+                        break;
+                    case animaltypes.Chicken:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/ChickenScore")) as GameObject;
+                        break;
+                    case animaltypes.Pig:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/PigsScore")) as GameObject;
+                        break;
+                    case animaltypes.Goat:    
+                        instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/GoatScore")) as GameObject;
+                        break;
+                }
+                instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "점수 : " + score;
+                instances[index].transform.parent = gameObject.transform;
+            }
+
+            private void totalSocre(int score, int index) {
+                instances[index] = Instantiate(Resources.Load("Prefabs/ScorePrefabs/TotalScore")) as GameObject;
+                instances[index].transform.SetParent(GameObject.Find("Canvas").transform, false);
+                instances[index].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "최종점수 : " + score;
+                instances[index].transform.parent = gameObject.transform;
+            }
+
+            public void initialize() {
+                GameManager.Instance.initialize();
             }
         }
     }

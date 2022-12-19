@@ -6,6 +6,7 @@ using UnityEngine;
 using Model;
 using Model.User;
 using Model.Animal;
+using View.Result;
 
 namespace Presenter
 {
@@ -16,34 +17,32 @@ namespace Presenter
             private IResultAnimal animal;
             private IResultUser user;
 
-            public ResultPresenter()
+            private ResultView view;
+
+            public ResultPresenter(ResultView resultView)
             {
                 user = UserModel.Instance;
                 animal = AnimalModel.Instance;
+                view = resultView;
             }
-            public Animal[] getAnimalInfo()
-            {
-                return animal.getExistAnimals();
-            }
-            public void setAnimalScore(int score)
-            {
-                animal.setAnimalScore(score);
-            }
-            public int getAnimalScore()
-            {
-                return animal.getAnimalScore();
-            }
-            public int getResultUserMoney()
-            {
-                return user.getResultUserMoney();
-            }
-            public void setTotalScore(int score)
-            {
-                user.setTotalScore(score);
-            }
-            public int getTotalScore()
-            {
-                return user.getTotalScore();
+
+
+            public void processScore() {
+                // score -1 
+                int[] score = new int[7];
+                Animal[] animals = animal.getExistAnimals();
+                for (int i = 0; i < 6; i ++) {
+                    score[i] = -1;
+                    if (animals[i] == null) continue;
+                    score[i] = animals[i].getScore();
+                }
+                score[6] = user.getTotalScore();
+
+                for (int i = 0; i < 7; i++ ){
+                    Debug.Log("score :" + score[i]);
+                }
+
+                view.setResultPanel(score, animals);
             }
         }
     }
