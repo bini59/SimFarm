@@ -19,16 +19,22 @@ namespace View
             private GameObject[] endPanel;
             private GameObject dayresult;
             private ResultPresenter resultPresenter;
-            // private float posX = 0.0F;
-            // private float posY = 60.0F;
-            // private float posZ = 0F;
-
             private GameObject[] instances;
+
+            [SerializeField]
+            private AudioClip[] audioClips;
+            [SerializeField]
+            private AudioSource audioSource;
+            [SerializeField]
+            private GameObject text;
+            [SerializeField]
+            private GameObject grid;
 
             void Start()
             {
                 resultPresenter = new ResultPresenter(this);
                 resultPresenter.processScore();
+                grid.GetComponent<AudioSource>().Stop();
             }
 
             public void setResultPanel(int[] scores, Animal[] animals) {
@@ -44,6 +50,25 @@ namespace View
                     score += scores[i];
                 }
                 totalSocre(score, index++);
+
+                playSound(score);
+                setText(score);
+            }
+
+            private void setText(int score) {
+                Text textComponent = text.GetComponent<Text>();
+                string message = "";
+                if(score >= 70) message= "잘했네, 농삿일 계속 해도 되겠어!";
+                else if (score >= 30) message= "이 정도면 먹고 살만큼은 하겠구만..";
+                else message= "당장 도시로 돌아가지 않으면 굶어 죽을걸세,\n 당장 떠나게!!";
+                textComponent.text = message;
+            }
+
+            private void playSound(int score) {
+                if(score >= 70) audioSource.clip = audioClips[0];
+                else if (score >= 30) audioSource.clip = audioClips[1];
+                else audioSource.clip = audioClips[2];
+                audioSource.Play();
             }
 
             private void goldScore(int score, int index) {
