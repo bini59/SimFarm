@@ -70,9 +70,9 @@ namespace Model{
                 }
 
                 string result = "";
-                if(stat.feel > 0) result += "animal feels good\n"; else if(stat.feel < 0) result += "animal feels bad\n";
-                if(stat.growth > 0) result += "animal grow up\n"; else if(stat.growth < 0) result += "animal grow down\n";
-                if(stat.hunger > 0) result += "animal feels full\n"; else if(stat.hunger < 0) result += "animal feels hungry\n";
+                if(stat.feel > 0) result += "기분이 좋아졌다!\n"; else if(stat.feel < 0) result += "기분이 나빠졌다...\n";
+                if(stat.growth > 0) result += "쑥쑥 자라고 있는 느낌이다!\n"; else if(stat.growth < 0) result += "점점 초췌해지는 느낌이 든다...\n";
+                if(stat.hunger > 0) result += "배가 차서 기뻐 보인다!\n"; else if(stat.hunger < 0) result += "배가 고파 보인다...\n";
                 return result;
             }
             

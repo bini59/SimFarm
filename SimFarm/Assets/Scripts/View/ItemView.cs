@@ -34,7 +34,7 @@ namespace View{
             public void click() {
                 bool res = user.buyEquipment(equipment);
                 string message;
-                message = res ? "you buy " + equipment.getEquipmentType() : "you can't buy that you don't have enough money";
+                message = res ? equipment.equipmentName() + "을(를) 구매했습니다" : "돈이 부족해요!!";
                 shop.transform.GetComponent<TMPro.TextMeshProUGUI>().text = message;
                 if(res) Destroy(gameObject); // remove when buy success
             }
