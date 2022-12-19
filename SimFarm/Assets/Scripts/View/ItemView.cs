@@ -32,11 +32,17 @@ namespace View{
             }
 
             public void click() {
+                ShopAudio Shop = GameObject.Find("Shop").GetComponent<ShopAudio>();
+                Shop.clickButton();
                 bool res = user.buyEquipment(equipment);
                 string message;
                 message = res ? equipment.equipmentName() + "을(를) 구매했습니다" : "돈이 부족해요!!";
                 shop.transform.GetComponent<TMPro.TextMeshProUGUI>().text = message;
-                if(res) Destroy(gameObject); // remove when buy success
+                if (res)
+                {
+                    Destroy(gameObject); // remove when buy success
+                    Shop.purchaseSuccess();
+                }
             }
         }
     }
