@@ -103,6 +103,16 @@ namespace Model{
                 return anm;
             }
 
+            public Animal[] getExistAnimals() {
+                int n = 0;
+                Animal[] anm = new Animal[6];
+                for (int i = 0; i < 6;i++) {
+                    if(animals[i] != null) anm[n++] = animals[i];
+                }
+                
+                return anm;
+            }
+
             public int[] getAnimalState(Animal animal)
             {
                 return animal.getDayendAnimalInfo();

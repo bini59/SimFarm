@@ -23,7 +23,7 @@ namespace Presenter
             }
             public Animal[] getAnimalInfo()
             {
-                return animal.getAnimalList();
+                return animal.getExistAnimals();
             }
             public void setAnimalScore(int score)
             {
